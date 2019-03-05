@@ -28,6 +28,16 @@ export const constantRouterMap = [
         }
       },
       {
+        path: 'icons',
+        component: _import('icons/index'),
+        name: 'icons',
+        meta: {
+          title: 'icons',
+          icon: 'icons',
+          noCache: true
+        }
+      },
+      {
         path: 'center',
         component: _import('center/mine'),
         name: 'center',

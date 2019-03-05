@@ -1,14 +1,17 @@
 <template>
   <div>
     <div class="padding"></div>
-    <section class="mine-border">
+    <div class="mine-border">
       <div class="mine-border-top">
         <div class="min-border-top-left">
           <div class="mine-border-logo"></div>
           <span class="mine-border-btn">点击登录</span>
         </div>
         <div class="mine-border-invite">
-          <span>邀请好友</span>
+          <span class="mine-border-invite-title">邀请好友</span>
+          <span class="mine-border-invite-icon">
+            <svg-icon icon-class="right"/>
+          </span>
         </div>
       </div>
       <div class="mine-border-bottom">
@@ -25,9 +28,14 @@
           <span class="mine-border-bottom-title">我的礼包</span>
         </div>
       </div>
-    </section>
+    </div>
     <div class="mine-middle">
-      <div class="mine-point">0</div>
+      <div class="mine-point">
+        <span class="mine-point-amount">0</span>
+        <span class="mine-point-icon">
+          <svg-icon icon-class="point"/>
+        </span>
+      </div>
       <div class="mine-sign">
         <div class="mine-sign-des">
           <span class="mine-sign-des-one">连续签到7天</span>
@@ -39,15 +47,69 @@
     <div class="mine-order">
       <div class="mine-order-header">
         <span class="mine-order-header-one">我的订单</span>
-        <span class="mine-order-header-two">全部</span>
+        <span class="mine-order-header-two">
+          <span class="mine-order-header-two-title">全部</span>
+          <span class="mine-order-header-two-icon">
+            <svg-icon icon-class="right"/>
+          </span>
+        </span>
       </div>
       <div class="mine-order-line"></div>
-      <div class="mine-order-item"></div>
+      <div class="mine-order-list">
+        <div class="mine-order-item">
+          <svg-icon icon-class="pay"/>
+          <span class="mine-order-item-title">待付款</span>
+        </div>
+        <div class="mine-order-item">
+          <svg-icon icon-class="send"/>
+          <span class="mine-order-item-title">待发货</span>
+        </div>
+        <div class="mine-order-item">
+          <svg-icon icon-class="deliver"/>
+          <span class="mine-order-item-title">待收货</span>
+        </div>
+        <div class="mine-order-item">
+          <svg-icon icon-class="comment"/>
+          <span class="mine-order-item-title">待评价</span>
+        </div>
+        <div class="mine-order-item">
+          <svg-icon icon-class="refund"/>
+          <span class="mine-order-item-title">退款</span>
+        </div>
+      </div>
     </div>
     <div class="mine-menu">
-      <div class="mine-menu-item"></div>
+      <div class="mine-menu-item">
+        <span class="mine-menu-item-title">优惠券</span>
+        <span class="mine-menu-item-icon">
+          <svg-icon icon-class="right"/>
+        </span>
+      </div>
+      <div class="mine-menu-item">
+        <span class="mine-menu-item-title">积分商城</span>
+        <span class="mine-menu-item-icon">
+          <svg-icon icon-class="right"/>
+        </span>
+      </div>
+      <div class="mine-menu-item">
+        <span class="mine-menu-item-title">我的互动</span>
+        <span class="mine-menu-item-icon">
+          <svg-icon icon-class="right"/>
+        </span>
+      </div>
+      <div class="mine-menu-item">
+        <span class="mine-menu-item-title">客服咨询</span>
+        <span class="mine-menu-item-icon">
+          <svg-icon icon-class="right"/>
+        </span>
+      </div>
+      <div class="mine-menu-item">
+        <span class="mine-menu-item-title">设置</span>
+        <span class="mine-menu-item-icon">
+          <svg-icon icon-class="right"/>
+        </span>
+      </div>
     </div>
-    <section class="mine-body"></section>
   </div>
 </template>
 
@@ -139,8 +201,13 @@ export default {
   align-items: center;
   height: 4rem;
   margin: 1rem 0;
+  background-color: #f8f8f8;
+  border-radius: 0.4rem;
   .mine-point {
     width: 33%;
+    .mine-point-icon {
+      color: gray;
+    }
   }
   .mine-sign {
     width: 66%;
@@ -179,17 +246,54 @@ export default {
 .mine-order {
   background-color: #fff;
   .mine-order-header {
-    font-size: 1.2rem;
-    height: 4rem;
+    font-size: 1.3rem;
+    height: 2rem;
+    line-height: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 0.8rem;
     .mine-order-header-two {
       color: #b4b4b4;
     }
-    &::after{
-        height: 1px;
-        background-color: #e9e9e9;
+  }
+  .mine-order-line {
+    height: 1px;
+    background-color: #e9e9e9;
+  }
+  .mine-order-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+    color: grey;
+    margin-top: 0.5rem;
+    .mine-order-item {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      font-size: 2rem;
+      .mine-order-item-title {
+        font-size: 1.25rem;
+      }
+    }
+  }
+}
+.mine-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 1.4rem;
+  color: grey;
+  .mine-menu-item {
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+    height: 4rem;
+    line-height: 4rem;
+    &:nth-last-child(1) {
+      border-bottom: none;
     }
   }
 }

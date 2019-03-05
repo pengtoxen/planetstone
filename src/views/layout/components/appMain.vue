@@ -14,7 +14,8 @@ export default {
 <style lang="scss" scoped>
 .app-main {
   min-height: 100%;
-  background-color: #efeff4;
+  // background-color: #efeff4;
+  background-color: #fff;
   padding-bottom: 50px;
 }
 .v-enter {

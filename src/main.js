@@ -9,6 +9,9 @@ Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
 
+//icon
+import '@/icons/index'
+
 //全局函数
 import common from '@/common'
 Vue.use(common)

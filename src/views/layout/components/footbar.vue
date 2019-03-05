@@ -55,7 +55,7 @@ export default {
           this.$router.push("/goodslist");
           break;
         case 2:
-          this.$router.push("/goodslist");
+          this.$router.push("/icons");
           break;
         case 3:
           this.$router.push("/center");

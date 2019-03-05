@@ -1,54 +1,39 @@
-exports.install = function(Vue, options) {
+exports.install = function (Vue, options) {
   Vue.prototype.$peng = {
     scope: this,
-    bindScope: function(that) {
+    bindScope: function (that) {
       this.scope = that
     },
-    deBindScope: function() {
+    deBindScope: function () {
       this.scope = this
     },
-    msgOk: function(message) {
-      this.scope.$notify({
-        title: this.scope.$t('common.message.success'),
-        message: message,
-        type: 'success',
-        duration: 2000
-      })
+    msgOk: function (message) {
+      Toast.success(message);
     },
-    msgErr: function(message) {
-      this.scope.$notify({
-        title: this.scope.$t('common.message.error'),
-        message: message,
-        type: 'error',
-        duration: 2000
-      })
+    msgErr: function (message) {
+      Toast.fail(message);
     },
-    msgInf: function(message) {
-      this.scope.$notify({
-        title: this.scope.$t('common.message.info'),
-        message: message,
-        type: 'info',
-        duration: 2000
-      })
+    msgInf: function (message) {
+      Toast(message);
     },
-    uuidv4: function() {
-      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    uuidv4: function () {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         const r = Math.random() * 16 | 0
         const v = c === 'x' ? r : (r & 0x3 | 0x8)
         return v.toString(16)
       })
     },
-    downloadURI: function(uri, name) {
+    downloadURI: function (uri, name) {
       const link = document.createElement('a')
       link.download = name
       link.href = uri
       link.click()
     },
-    getExt: function(file) {
+    getExt: function (file) {
       const index = file.lastIndexOf('.')
       return file.substring(index + 1)
     },
-    isPicture: function(file) {
+    isPicture: function (file) {
       const ext = this.getExt(file)
       const exts = ['png', 'jpg', 'jpeg', 'gif']
       if (this.inArray(ext, exts) !== false) {
@@ -56,7 +41,7 @@ exports.install = function(Vue, options) {
       }
       return false
     },
-    isFile: function(file) {
+    isFile: function (file) {
       const ext = this.getExt(file)
       const exts = ['png', 'jpg', 'jpeg', 'gif']
       if (this.inArray(ext, exts) === false) {
@@ -64,19 +49,19 @@ exports.install = function(Vue, options) {
       }
       return false
     },
-    overPicSize: function(file, size = 1048576, max = 1048576) {
+    overPicSize: function (file, size = 1048576, max = 1048576) {
       if (this.isPicture(file) && size <= max) {
         return true
       }
       return false
     },
-    overFileSize: function(file, size = 15728640, max = 15728640) {
+    overFileSize: function (file, size = 15728640, max = 15728640) {
       if (this.isFile(file) && size <= max) {
         return true
       }
       return false
     },
-    isWord: function(file) {
+    isWord: function (file) {
       const ext = this.getExt(file)
       const exts = ['docx', 'doc']
       if (this.inArray(ext, exts) !== false) {
@@ -89,7 +74,7 @@ exports.install = function(Vue, options) {
     * @param {string} val 要转换的值
     * @returns {boolean}
     */
-    isPositiveInt: function(val) {
+    isPositiveInt: function (val) {
       const n = this.getInt(val)
       if (n % 1 !== 0 || n <= 0) {
         return false
@@ -101,7 +86,7 @@ exports.install = function(Vue, options) {
       * @param {string} val 要转换的值
       * @returns {int}
       */
-    getInt: function(val) {
+    getInt: function (val) {
       return this.getIntDefault(val, 0)
     },
     /**
@@ -109,7 +94,7 @@ exports.install = function(Vue, options) {
       * @param {string} val 要转换的值
       * @returns {int?} 如果转换失败，则返回null
       */
-    getIntNull: function(val) {
+    getIntNull: function (val) {
       return this.getIntDefault(val, null)
     },
     /**
@@ -118,7 +103,7 @@ exports.install = function(Vue, options) {
       * @param {int} defaultValue 默认值
       * @returns {int} 转换结果
       */
-    getIntDefault: function(val, defaultValue) {
+    getIntDefault: function (val, defaultValue) {
       return parseInt(val, 10) || defaultValue
     },
     /**
@@ -126,7 +111,7 @@ exports.install = function(Vue, options) {
       * @param {string} val 要转换的值
       * @returns {float} 转换结果
       */
-    getFloat: function(val) {
+    getFloat: function (val) {
       return this.getFloatDefault(val, 0)
     },
     /**
@@ -134,7 +119,7 @@ exports.install = function(Vue, options) {
       * @param {string} val 要转换的值
       * @returns {float?} 转换结果
       */
-    getFloatNull: function(val) {
+    getFloatNull: function (val) {
       return this.getFloatDefault(val, null)
     },
     /**
@@ -143,7 +128,7 @@ exports.install = function(Vue, options) {
       * @param {float} defaultValue 默认值
       * @returns {float} 转换结果
       */
-    getFloatDefault: function(val, defaultValue) {
+    getFloatDefault: function (val, defaultValue) {
       return parseFloat(val) || defaultValue
     },
     /**
@@ -151,7 +136,7 @@ exports.install = function(Vue, options) {
       * @param {object} val 要判断的值
       * @returns {Boolean} 判断结果
       */
-    isObject: function(val) {
+    isObject: function (val) {
       return val !== null && Object.prototype.toString.call(val) === '[object Object]'
     },
     /**
@@ -159,7 +144,7 @@ exports.install = function(Vue, options) {
       * @param {object} val 要判断的值
       * @returns {Boolean} 判断结果
       */
-    isNumber: function(val) {
+    isNumber: function (val) {
       return val !== null && Object.prototype.toString.call(val) === '[object Number]'
     },
     /**
@@ -167,7 +152,7 @@ exports.install = function(Vue, options) {
       * @param {object} val 要判断的值
       * @returns {Boolean} 判断结果
       */
-    isDate: function(val) {
+    isDate: function (val) {
       return val instanceof Date && !isNaN(val.valueOf())
     },
     /**
@@ -175,7 +160,7 @@ exports.install = function(Vue, options) {
       * @param {object} val 要判断的值
       * @returns {Boolean} 判断结果
       */
-    isArray: function(val) {
+    isArray: function (val) {
       return val !== null && Object.prototype.toString.call(val) === '[object Array]'
     },
     /**
@@ -183,7 +168,7 @@ exports.install = function(Vue, options) {
       * @param {object} val 要判断的值
       * @returns {Boolean} 判断结果
       */
-    isFunction: function(val) {
+    isFunction: function (val) {
       return val !== null && Object.prototype.toString.call(val) === '[object Function]'
     },
     /**
@@ -191,7 +176,7 @@ exports.install = function(Vue, options) {
       * @param {object} val 要判断的值
       * @returns {Boolean} 判断结果
       */
-    isString: function(val) {
+    isString: function (val) {
       return val !== null && Object.prototype.toString.call(val) === '[object String]'
     },
     /**
@@ -199,7 +184,7 @@ exports.install = function(Vue, options) {
       * @param {string} val 要判断的值
       * @returns {bool} 判断结果
       */
-    isBoolean: function(val) {
+    isBoolean: function (val) {
       return val !== null && Object.prototype.toString.call(val) === '[object Boolean]'
     },
     /**
@@ -207,7 +192,7 @@ exports.install = function(Vue, options) {
       * @param {object} val 要判断的值
       * @returns {Boolean} 判断结果
       */
-    isUndefined: function(val) {
+    isUndefined: function (val) {
       return val === undefined || Object.prototype.toString.call(val) === '[object undefined]'
     },
     /**
@@ -215,7 +200,7 @@ exports.install = function(Vue, options) {
       * @param {string} val 要判断的值
       * @returns {Boolean} 判断结果
       */
-    isNullOrEmpty: function(val) {
+    isNullOrEmpty: function (val) {
       return val === null || val === ''
     },
     /**
@@ -223,7 +208,7 @@ exports.install = function(Vue, options) {
       * @param {string} val 要判断的值
       * @returns {Boolean} 判断结果
       */
-    isNullOrWhiteSpace: function(val) {
+    isNullOrWhiteSpace: function (val) {
       return this.isNullOrEmpty(this.string.trim(val))
     },
     /**
@@ -231,7 +216,7 @@ exports.install = function(Vue, options) {
       * @param {object} val 要判断的值
       * @returns {bool} 判断结果
       */
-    isRegExp: function(val) {
+    isRegExp: function (val) {
       return val && val instanceof RegExp
     },
     /**
@@ -239,7 +224,7 @@ exports.install = function(Vue, options) {
       * @param {object} val 要判断的值
       * @returns {Boolean} 判断结果
       */
-    isNaN: function(val) {
+    isNaN: function (val) {
       return isNaN(val)
     },
     /**
@@ -247,7 +232,7 @@ exports.install = function(Vue, options) {
       * @param {object} val 要判断的值
       * @returns {Boolean} 判断结果
       */
-    isNull: function(val) {
+    isNull: function (val) {
       return val === null
     },
     /**
@@ -255,7 +240,7 @@ exports.install = function(Vue, options) {
       * @param {string} val 要判断的值
       * @returns {Boolean} 判断结果
       */
-    isUpper: function(val) {
+    isUpper: function (val) {
       return val.toUpperCase() === val
     },
     /**
@@ -263,7 +248,7 @@ exports.install = function(Vue, options) {
       * @param {string} val 要判断的值
       * @returns {Boolean} 判断结果
       */
-    isLower: function(val) {
+    isLower: function (val) {
       return val.toLowerCase() === val
     },
     /**
@@ -273,7 +258,7 @@ exports.install = function(Vue, options) {
     * @param {Number} idx 从数组array的idx处开始判断，若未指定，则从整个数组array中判断
     * @returns {Number} val在array中的位置，若不在，则返回false
     */
-    inArray: function(target, data, idx) {
+    inArray: function (target, data, idx) {
       if (!data) return false
       if (!this.isArray(data)) {
         return false
@@ -293,7 +278,7 @@ exports.install = function(Vue, options) {
      * @param {Array} args 要合并的数组参数，如：arr1,arr2,arr3...
      * @returns {Array} 合并后的结果数组
      */
-    concat: function(args) {
+    concat: function (args) {
       return [].concat.apply([], arguments)
     },
     /**
@@ -302,7 +287,7 @@ exports.install = function(Vue, options) {
      * @param {Array} args 要合并的数组参数(arr1,arr2,arr3...)
      * @returns {String} 合并后的字符串
      */
-    join: function(separator, args) {
+    join: function (separator, args) {
       var source = []
       if (arguments.length > 2) {
         for (var i = 1; i < arguments.length; i++) {
@@ -318,7 +303,7 @@ exports.install = function(Vue, options) {
      * @param {Array} arr 需要去重的数组
      * @returns {Array} 去重后的新数组
      */
-    unique: function(arr) {
+    unique: function (arr) {
       if (!arr || arr.length <= 1) {
         return arr
       }
@@ -344,7 +329,7 @@ exports.install = function(Vue, options) {
      * @param {Array} removeArr 需要删除的项
      * @returns {Array} 新的数组
      */
-    remove: function(sourceArr, removeArr) {
+    remove: function (sourceArr, removeArr) {
       if (!sourceArr || !removeArr || removeArr.length === 0) {
         return sourceArr
       }
@@ -369,7 +354,7 @@ exports.install = function(Vue, options) {
      * @param {object} obj 要转换为Array的对象
      * @returns {Array} 转换后的数组
      */
-    toArray: function(obj) {
+    toArray: function (obj) {
       if (!obj) {
         return null
       }
