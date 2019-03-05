@@ -1,13 +1,27 @@
 <template>
   <section>
     <van-tabbar v-model="active" fixed="fixed" active-color="color">
-      <van-tabbar-item
+      <!-- <van-tabbar-item
         :icon="item.icon"
         v-for="(item,index) in tabs"
         :key="index"
         :id="item.id"
         :url="item.target"
-      >{{item.name}}</van-tabbar-item>
+      >{{item.name}}<svg-icon icon-class="pay"/></van-tabbar-item>-->
+      <van-tabbar-item
+        v-for="(item,index) in tabs"
+        :key="index"
+        :id="item.id"
+        :url="item.target"
+        class="tab-icon-list"
+      >
+        <div class="tab-icon-item">
+          <div class="tab-icon">
+            <svg-icon :icon-class="item.icon"/>
+          </div>
+          <span class="tab-icon-name">{{item.name}}</span>
+        </div>
+      </van-tabbar-item>
     </van-tabbar>
   </section>
 </template>
@@ -23,22 +37,27 @@ export default {
       tabs: [
         {
           name: "首页",
-          icon: "wap-home",
+          icon: "home",
           target: ""
         },
         {
-          name: "分类",
-          icon: "cart-o",
+          name: "商品",
+          icon: "goods",
+          target: ""
+        },
+        {
+          name: "发现",
+          icon: "explore",
           target: ""
         },
         {
           name: "购物车",
-          icon: "cart-o",
+          icon: "cart",
           target: ""
         },
         {
           name: "我的",
-          icon: "user-o",
+          icon: "profile",
           target: ""
         }
       ]
@@ -60,6 +79,9 @@ export default {
         case 3:
           this.$router.push("/center");
           break;
+        case 4:
+          this.$router.push("/center");
+          break;
       }
     }
   },
@@ -67,24 +89,24 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.mint-tabbar {
-  height: 50px;
-  a {
-    color: grey;
+.tab-icon-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #5f5f5f;
+  margin-bottom: 0.6rem;
+  .tab-icon-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .tab-icon {
+      font-size: 2.2rem;
+    }
+    .tab-icon-name {
+      font-size: 1.17rem;
+    }
   }
-  .mint-tab-item.is-selected {
-    background-color: #fff;
-    color: red;
-  }
-}
-.footbar-tab-icon {
-  font-size: 24px !important;
-  margin-top: 0px;
-}
-.mint-tab-item-icon {
-  width: 24px;
-  height: 24px;
-  margin: 0 auto 0px;
 }
 </style>
 

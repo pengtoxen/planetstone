@@ -77,6 +77,7 @@
           <span class="mine-order-item-title">退款</span>
         </div>
       </div>
+      <div class="mine-order-line"></div>
     </div>
     <div class="mine-menu">
       <div class="mine-menu-item">
@@ -129,6 +130,9 @@ export default {
   padding: 0 0.7rem;
   padding-bottom: 0 !important;
   background-color: #fff !important;
+}
+.app-wrapper {
+  background-color: #eeeeee;
 }
 .padding {
   height: 0.7rem;
@@ -267,7 +271,7 @@ export default {
     align-items: center;
     height: 5rem;
     color: grey;
-    margin-top: 0.5rem;
+    margin: 0.5rem 0rem;
     .mine-order-item {
       display: flex;
       justify-content: center;
@@ -285,9 +289,9 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   font-size: 1.4rem;
-  color: grey;
+  color: #5f5f5f;
   .mine-menu-item {
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid #e9e9e9;
     display: flex;
     justify-content: space-between;
     height: 4rem;
