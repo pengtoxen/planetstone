@@ -54,7 +54,7 @@ export const constantRouterMap = [
 export default new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }), // 跳转到新的页面时,定位到最顶端
-  routes: constantRouterMap
+  routes: constantRouterMap,
 })
 
 export const asyncRouterMap = [

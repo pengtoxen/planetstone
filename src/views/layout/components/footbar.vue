@@ -1,6 +1,6 @@
 <template>
   <section>
-    <van-tabbar v-model="active" fixed="fixed" active-color="color">
+    <van-tabbar v-model="active" fixed="fixed" :active-color="color">
       <!-- <van-tabbar-item
         :icon="item.icon"
         v-for="(item,index) in tabs"
@@ -33,7 +33,7 @@ export default {
     return {
       active: 0,
       fixed: true,
-      color: "red",
+      color: "#01CEAD",
       tabs: [
         {
           name: "首页",
@@ -107,6 +107,9 @@ export default {
       font-size: 1.17rem;
     }
   }
+}
+.van-tabbar-item--active {
+  color: rgb(1, 206, 173) !important;
 }
 </style>
 
