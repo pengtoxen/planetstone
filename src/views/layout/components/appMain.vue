@@ -1,8 +1,9 @@
 <template>
   <section class="app-main">
-    <transition mode="out-in">
+    <!-- <transition mode="out-in">
       <router-view></router-view>
-    </transition>
+    </transition>-->
+    <router-view></router-view>
   </section>
 </template>
 

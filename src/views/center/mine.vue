@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mine-container">
     <div class="padding"></div>
     <div class="mine-border">
       <div class="mine-border-top">
@@ -125,13 +125,11 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.app-main {
+<style lang="scss" scoped>
+.mine-container {
   padding: 0 0.7rem;
   padding-bottom: 0 !important;
   background-color: #fff !important;
-}
-.app-wrapper {
   background-color: #eeeeee;
 }
 .padding {
@@ -169,7 +167,7 @@ export default {
       background-color: #fff;
       border-radius: 1rem 0 0 1rem;
       height: 2.5rem;
-      width: 6rem;
+      width: 7rem;
       display: flex;
       justify-content: flex-end;
       align-items: center;

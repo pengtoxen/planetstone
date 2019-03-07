@@ -4,7 +4,9 @@
     <div class="main-container">
       <app-main></app-main>
     </div>
-    <footbar class="footbar-container"></footbar>
+    <footbar v-if="footTabOne" class="footbar-container"></footbar>
+    <footbar v-else-if="footTabTwo"></footbar>
+    <footbar v-else-if="footTabThree"></footbar>
   </div>
 </template>
 
@@ -13,6 +15,23 @@ import { Headbar, AppMain, Footbar } from "./components/index";
 
 export default {
   name: "Layout",
+  data() {
+    return {
+      footTabOne: false,
+      footTabTwo: false,
+      footTabThree: false
+    };
+  },
+  created() {
+    let footTab = this.$route.meta.footTab;
+    if (footTab == "footTabOne") {
+      this.footTabOne = true;
+    } else if (footTab == "footTabTwo") {
+      this.footTabTwo = true;
+    } else if (footTab == "footTabThree") {
+      this.footTabThree = true;
+    }
+  },
   components: {
     Headbar,
     AppMain,

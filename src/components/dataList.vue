@@ -47,7 +47,7 @@ export default {
         if (this.settingData.$list.length >= 20) {
           this.settingData.$finished = true;
         }
-      }, 500);
+      }, 1000);
     },
     doTask(param) {
       this.$router.push({ name: this.target, params: param });

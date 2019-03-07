@@ -166,7 +166,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .entrance {
   display: flex;
   flex-wrap: nowrap;
@@ -181,6 +181,7 @@ export default {
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
+    width: 49%;
     img {
       width: 45px;
       height: 45px;

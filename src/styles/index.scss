@@ -163,20 +163,10 @@ code {
   }
 }
 
-.filter-container {
-  padding-bottom: 10px;
-  .filter-item {
-    display: inline-block;
-    vertical-align: middle;
-    margin-bottom: 10px;
-  }
+.van-list__finished-text {
+  width: 100% !important;
 }
 
-//refine vue-multiselect plugin
-.multiselect {
-  line-height: 16px;
-}
-
-.multiselect--active {
-  z-index: 1000 !important;
+.van-list__loading{
+  width: 100% !important;
 }

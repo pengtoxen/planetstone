@@ -1,13 +1,6 @@
 <template>
   <section>
     <van-tabbar v-model="active" fixed="fixed" :active-color="color">
-      <!-- <van-tabbar-item
-        :icon="item.icon"
-        v-for="(item,index) in tabs"
-        :key="index"
-        :id="item.id"
-        :url="item.target"
-      >{{item.name}}<svg-icon icon-class="pay"/></van-tabbar-item>-->
       <van-tabbar-item
         v-for="(item,index) in tabs"
         :key="index"
@@ -46,8 +39,8 @@ export default {
           target: ""
         },
         {
-          name: "发现",
-          icon: "explore",
+          name: "案例",
+          icon: "discover",
           target: ""
         },
         {
@@ -71,10 +64,10 @@ export default {
           this.$router.push("/home");
           break;
         case 1:
-          this.$router.push("/goodslist");
+          this.$router.push("/icons");
           break;
         case 2:
-          this.$router.push("/icons");
+          this.$router.push("/case");
           break;
         case 3:
           this.$router.push("/center");

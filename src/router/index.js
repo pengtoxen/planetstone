@@ -14,7 +14,8 @@ export const constantRouterMap = [
     redirect: '/home',
     meta: {
       title: 'index',
-      icon: 'index'
+      icon: 'index',
+      footTab: "footTabOne"
     },
     children: [
       {
@@ -24,7 +25,8 @@ export const constantRouterMap = [
         meta: {
           title: 'home',
           icon: 'home',
-          noCache: true
+          noCache: true,
+          footTab: "footTabOne"
         }
       },
       {
@@ -34,7 +36,8 @@ export const constantRouterMap = [
         meta: {
           title: 'icons',
           icon: 'icons',
-          noCache: true
+          noCache: true,
+          footTab: "footTabOne"
         }
       },
       {
@@ -44,7 +47,19 @@ export const constantRouterMap = [
         meta: {
           title: 'center',
           icon: 'center',
-          noCache: true
+          noCache: true,
+          footTab: "footTabOne"
+        }
+      },
+      {
+        path: 'case',
+        component: _import('case/cabinetList'),
+        name: 'case',
+        meta: {
+          title: 'case',
+          icon: 'case',
+          noCache: true,
+          footTab: "footTabOne"
         }
       }
     ]
