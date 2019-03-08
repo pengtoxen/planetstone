@@ -1,51 +1,55 @@
 <template>
-  <div>
-    <search></search>
+  <div class="container">
     <swiper :photoList="sliderList" :isFull="isFull"></swiper>
+    <div class="services-list">
+      <div class="services-item" v-for="(item, index) in servicesList" :key="index">
+        <svg-icon icon-class="round_check"/>
+        {{item.title}}
+      </div>
+    </div>
+    <div class="division-zone"></div>
     <div class="entrance">
       <div class="entrance-item" v-for="(item, index) in entrance" :key="index">
-        <img :src="item.img" alt class="entrance-icon">
+        <svg-icon :icon-class="item.icon"/>
         <span class="entrance-title">{{item.title}}</span>
       </div>
     </div>
+    <div class="division-zone"></div>
     <div class="module-one-title">
-      <span>{{moduleOne.title}}</span>
+      <span class="title">{{moduleOne.title}}</span>
+      <span class="sub-title">{{moduleOne.sub_title}}</span>
     </div>
     <div class="module-one">
       <goodslist
         :list="moduleOne.list"
         :finished="moduleOne.finished"
         :finishedtext="moduleOne.finishedtext"
-      >
-        <template v-slot:one="{oneData}">
-          <h1 class="title">{{ oneData.title }}</h1>
-          <div class="info">
-            <p class="price">
-              <span class="now">￥{{ oneData.sell_price }}</span>
-              <span class="old">￥{{ oneData.market_price }}</span>
-            </p>
-            <p class="sell">
-              <span>热卖中</span>
-              <span>剩{{ oneData.stock_quantity }}件</span>
-            </p>
-          </div>
-        </template>
-      </goodslist>
+      ></goodslist>
+    </div>
+    <div class="module-two-title">
+      <span class="title">{{moduleTwo.title}}</span>
+      <span class="sub-title">{{moduleTwo.sub_title}}</span>
     </div>
     <div class="module-two">
-      <span class="module-two-title">{{moduleTwo.title}}</span>
-      <goodslist :list="moduleTwo.list">
+      <goodslist
+        :list="moduleTwo.list"
+        :finished="moduleTwo.finished"
+        :finishedtext="moduleTwo.finishedtext"
+      ></goodslist>
+    </div>
+    <div class="module-three-title">
+      <span class="title">{{moduleThree.title}}</span>
+      <span class="sub-title">{{moduleThree.sub_title}}</span>
+    </div>
+    <div class="module-three">
+      <goodslist :list="moduleThree.list">
         <template v-slot:one="{oneData}">
-          <h1 class="title">{{ oneData.title }}</h1>
-          <div class="info">
-            <p class="price">
-              <span class="now">￥{{ oneData.sell_price }}</span>
-              <span class="old">￥{{ oneData.market_price }}</span>
-            </p>
-            <p class="sell">
-              <span>热卖中</span>
-              <span>剩{{ oneData.stock_quantity }}件</span>
-            </p>
+          <div class="goods-info">
+            <div class="goods-name">{{ oneData.title }}</div>
+            <div class="goods-price">￥{{ oneData.sell_price }}</div>
+            <div class="goods-tags">
+              <div class="goods-tag" v-for="(item, index) in oneData.tags" :key="index">{{ item}}</div>
+            </div>
           </div>
         </template>
       </goodslist>
@@ -55,7 +59,6 @@
 
 <script>
 import swiper from "@/components/swiper.vue";
-import search from "@/components/search.vue";
 import datalist from "@/components/dataList.vue";
 export default {
   data() {
@@ -64,95 +67,108 @@ export default {
       sliderList: [
         {
           img:
-            "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1222770689,3169125003&fm=173&app=25&f=JPEG?w=639&h=297&s=753317D5C222790344AC7C640300E030"
+            "http://pic.linshimuye.com/image/-1/2018-11-12-048762ee39b7-45ea-9548-1c843e9c01fe.jpg"
         },
         {
           img:
-            "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1222770689,3169125003&fm=173&app=25&f=JPEG?w=639&h=297&s=753317D5C222790344AC7C640300E030"
+            "http://pic.linshimuye.com/image/-1/2018-11-12-048762ee39b7-45ea-9548-1c843e9c01fe.jpg"
+        }
+      ],
+      servicesList: [
+        {
+          title: "上门测量"
         },
         {
-          img:
-            "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1222770689,3169125003&fm=173&app=25&f=JPEG?w=639&h=297&s=753317D5C222790344AC7C640300E030"
+          title: "送货安装"
+        },
+        {
+          title: "三年质保"
+        },
+        {
+          title: "保价承诺"
         }
       ],
       entrance: [
         {
-          title: "签到",
+          title: "新上橱柜",
           target: "",
-          img:
-            "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1222770689,3169125003&fm=173&app=25&f=JPEG?w=639&h=297&s=753317D5C222790344AC7C640300E030"
+          icon: "new"
         },
         {
-          title: "签到",
+          title: "热销橱柜",
           target: "",
-          img:
-            "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1222770689,3169125003&fm=173&app=25&f=JPEG?w=639&h=297&s=753317D5C222790344AC7C640300E030"
+          icon: "hot"
         },
         {
-          title: "签到",
+          title: "到店体验",
           target: "",
-          img:
-            "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1222770689,3169125003&fm=173&app=25&f=JPEG?w=639&h=297&s=753317D5C222790344AC7C640300E030"
+          icon: "location"
         },
         {
-          title: "签到",
+          title: "橱柜案例",
           target: "",
-          img:
-            "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1222770689,3169125003&fm=173&app=25&f=JPEG?w=639&h=297&s=753317D5C222790344AC7C640300E030"
+          icon: "album"
         }
       ],
       moduleOne: {
         list: [
           {
             id: 1,
-            title: "iphone",
-            sell_price: "199",
-            market_price: "299",
-            tag: "热卖",
-            stock_quantity: 60,
-            img_src:
-              "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1222770689,3169125003&fm=173&app=25&f=JPEG?w=639&h=297&s=753317D5C222790344AC7C640300E030"
+            img_url:
+              "http://pic.linshimuye.com/image/-1/2018-6-18-977b7782ead0-40c5-9ce3-7f7a62ffe5d3.jpg"
           },
           {
-            id: 1,
-            title: "iphone",
-            sell_price: "199",
-            market_price: "299",
-            tag: "热卖",
-            stock_quantity: 60,
-            img_src:
-              "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1222770689,3169125003&fm=173&app=25&f=JPEG?w=639&h=297&s=753317D5C222790344AC7C640300E030"
+            id: 2,
+            img_url:
+              "http://pic.linshimuye.com/image/-1/2018-6-18-977b7782ead0-40c5-9ce3-7f7a62ffe5d3.jpg"
           }
         ],
         finished: true,
         finishedtext: " ",
-        title: "推荐商品"
+        title: "Buy家清单",
+        sub_title: "寻找最合适的橱柜"
       },
       moduleTwo: {
         list: [
           {
             id: 1,
-            title: "iphone",
-            sell_price: "199",
-            market_price: "299",
-            tag: "热卖",
-            stock_quantity: 60,
-            img_src:
-              "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1222770689,3169125003&fm=173&app=25&f=JPEG?w=639&h=297&s=753317D5C222790344AC7C640300E030"
+            img_url:
+              "http://pic.linshimuye.com/image/-1/2018-6-18-977b7782ead0-40c5-9ce3-7f7a62ffe5d3.jpg"
           },
           {
-            id: 1,
-            title: "iphone",
-            sell_price: "199",
-            market_price: "299",
-            tag: "热卖",
-            stock_quantity: 60,
-            img_src:
-              "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1222770689,3169125003&fm=173&app=25&f=JPEG?w=639&h=297&s=753317D5C222790344AC7C640300E030"
+            id: 2,
+            img_url:
+              "http://pic.linshimuye.com/image/-1/2018-6-18-977b7782ead0-40c5-9ce3-7f7a62ffe5d3.jpg"
           }
         ],
         finished: true,
-        title: "热销商品"
+        finishedtext: " ",
+        title: "壹时半刻",
+        sub_title: "他的故事,是你的灵魂攻略"
+      },
+      moduleThree: {
+        list: [
+          {
+            id: 1,
+            title: "石英石台面实木橱柜",
+            sell_price: 5190,
+            tags: ["高端大气", "上档次"],
+            img_url:
+              "http://pic.linshimuye.com/image/-1/2018-8-20-1ef8597cbb6b-4fca-b7f6-48d86434341b.jpg"
+          },
+          {
+            id: 2,
+            title: "石英石台面实木橱柜",
+            sell_price: 5190,
+            tags: ["高端大气", "上档次"],
+            img_url:
+              "http://pic.linshimuye.com/image/-1/2018-8-20-1ef8597cbb6b-4fca-b7f6-48d86434341b.jpg"
+          }
+        ],
+        finished: true,
+        finishedtext: " ",
+        title: "精选推荐",
+        sub_title: "精细挑选,只为独一无二的你"
       }
     };
   },
@@ -160,106 +176,121 @@ export default {
   methods: {},
   components: {
     swiper,
-    search,
     goodslist: datalist
   }
 };
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/mixin.scss";
+.container {
+  margin-top: 3rem;
+}
+.services-list {
+  @include flexLayout(nowrap);
+  @include greenColor;
+  font-size: 1rem;
+  height: 3rem;
+}
+.division-zone {
+  height: 1rem;
+  @include greyBgc;
+}
 .entrance {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px 5px;
-  padding-bottom: 5px;
-  margin: 5px 0;
+  @include flexLayout(nowrap);
+  padding: 1rem 0.5rem;
+  padding-bottom: 0.5rem;
   background-color: #fff;
+  color: #999;
+  font-size: 2.5rem;
   .entrance-item {
+    @include flexLayout(nowrap, column, space-between);
+    width: 49%;
+    .entrance-title {
+      font-size: 1.3rem;
+    }
+  }
+}
+.module-one-title,
+.module-two-title,
+.module-three-title {
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  margin-bottom: 0.1rem;
+  @include flexLayout(nowrap, column);
+  .title {
+    font-weight: 700;
+    font-size: 1.8rem;
+  }
+  .sub-title {
+    font-size: 1rem;
+    color: #999;
+  }
+}
+.module-one /deep/ .data-list {
+  @include flexLayout(wrap, row, space-between);
+  background-color: #fff;
+  margin-bottom: 0.5rem;
+  margin-top: -0.5rem;
+  padding: 0;
+  .data-item {
+    width: 100%;
+    box-shadow: 0 0 0.8rem #ccc;
+    margin: 0.5rem 0;
+    margin-top: 0;
+    padding: 0;
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
-    width: 49%;
+    min-height: 160px;
+    overflow: hidden;
     img {
-      width: 45px;
-      height: 45px;
-      display: block;
-      border-radius: 50%;
-    }
-    .entrance-title {
-      font-size: 13px;
-      line-height: 20px;
-      align-content: center;
+      width: 100%;
     }
   }
 }
-.module-one-title {
-  padding: 5px 10px;
+.module-two /deep/ .data-list {
+  @include flexLayout(wrap, row, space-between);
   background-color: #fff;
-  margin-bottom: 1px;
-  span {
-    font-size: 15px !important;
-    line-height: 16px;
-    border-left: 3px solid cornflowerblue;
-  }
-}
-.module-one {
-  background-color: #fff;
-  margin-bottom: 5px;
-}
-.module-two {
-  background-color: #fff;
-  .module-two-title {
-    display: block;
-    color: #de2727;
-    font-size: 16px !important;
-    position: relative;
-    text-align: center;
-    padding: 10px 0;
-  }
-  .module-two-title:before,
-  .module-two-title:after {
-    content: "";
-    position: absolute;
-    width: 19px;
-    height: 1px;
-    background-color: #de2727;
-    top: 50%;
-  }
-  .module-two-title:before {
-    left: 35%;
-  }
-  .hot-sell {
-
-  }
-}
-.data-list {
+  margin-bottom: 0.5rem;
+  margin-top: -0.5rem;
+  padding: 0;
   .data-item {
-    .info {
-      background-color: #eee;
-      p {
-        margin: 0;
-        padding: 5px;
-      }
-      .price {
-        .now {
-          color: red;
-          font-weight: bold;
-          font-size: 16px;
-        }
-        .old {
-          text-decoration: line-through;
-          font-size: 12px;
-          margin-left: 10px;
-        }
-      }
-      .sell {
-        display: flex;
-        justify-content: space-between;
-        font-size: 13px;
-      }
+    width: 100%;
+    box-shadow: 0 0 0.8rem #ccc;
+    margin: 0.5rem 0;
+    margin-top: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    min-height: 160px;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+}
+.goods-info {
+  @include flexLayout(nowrap, column, space-around, flex-start);
+  color: black;
+  padding-bottom: 0.3rem;
+  .goods-name {
+    color: #999;
+    font-size: 1rem;
+    padding-top: 0.5rem;
+  }
+  .goods-price {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  .goods-tags {
+    font-size: 0.8rem;
+    height: 1.3rem;
+    line-height: 1.3rem;
+    @include flexLayout(nowrap, row, flex-start, center);
+    .goods-tag {
+      border: 1px solid #999;
+      border-radius: 4px;
+      margin: 0 0.2rem;
     }
   }
 }

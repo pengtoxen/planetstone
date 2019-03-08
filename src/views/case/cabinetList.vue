@@ -1,5 +1,18 @@
 <template>
   <div class="container">
+    <div class="mui-slider">
+      <div
+        class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted"
+      >
+        <div class="mui-scroll">
+          <a
+            :class="['mui-control-item', item.id === 0 ? 'mui-active' : '']"
+            v-for="item in cates"
+            :key="item.id"
+          >{{item.title}}</a>
+        </div>
+      </div>
+    </div>
     <cabinetlist :list="cabinetList">
       <template v-slot:one="{oneData}">
         <div class="info">
@@ -36,6 +49,32 @@ export default {
           img_url:
             "http://pic.linshimuye.com/image/-1/2017-8-23-a8b1fcade6f3-4b31-a61c-6761e79dd9b4.jpg"
         }
+      ],
+      cates: [
+        {
+          id: 0,
+          title: "全部"
+        },
+        {
+          id: 1,
+          title: "NBA"
+        },
+        {
+          id: 2,
+          title: "足球"
+        },
+        {
+          id: 3,
+          title: "电影"
+        },
+        {
+          id: 4,
+          title: "游戏"
+        },
+        {
+          id: 5,
+          title: "游戏"
+        }
       ]
     };
   },
@@ -45,6 +84,11 @@ export default {
       res.push(this.cabinetList[0]);
     }
     this.cabinetList = res;
+  },
+  mounted() {
+    this.$mui(".mui-scroll-wrapper").scroll({
+      deceleration: 0.0005
+    });
   },
   methods: {
     goDetail(id) {
@@ -57,10 +101,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.mui-slider {
+  position: fixed;
+  background-color: #fff;
+}
 .container /deep/ .data-list {
   display: flex;
   flex-wrap: wrap;
   padding: 0;
+  padding-top: 38px;
   justify-content: space-between;
   .data-item {
     width: 100%;
@@ -88,12 +137,15 @@ export default {
       background-color: #eee;
       .description {
         padding-left: 1rem;
+        font-size: 1rem;
       }
       .ext-info {
         display: flex;
         justify-content: flex-start;
         padding-right: 1rem;
         font-size: 1.15rem;
+        align-items: center;
+        margin-bottom: 0 !important;
         .views {
           margin-right: 1rem;
         }

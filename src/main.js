@@ -15,9 +15,12 @@ import '@/icons/index'
 //全局函数
 import common from '@/common'
 Vue.use(common)
+import mui from "@/../static/mui/js/mui.min.js";
+Vue.prototype.$mui = mui;
 
 //全局样式
 import '@/styles/index.scss'
+import '@/../static/mui/css/mui.min.css'
 
 import Vant from 'vant';
 import 'vant/lib/index.css';

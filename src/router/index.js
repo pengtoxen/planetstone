@@ -15,7 +15,8 @@ export const constantRouterMap = [
     meta: {
       title: 'index',
       icon: 'index',
-      footTab: "footTabOne"
+      footTab: "footTabOne",
+      headTab: "headTabOne"
     },
     children: [
       {
@@ -26,7 +27,8 @@ export const constantRouterMap = [
           title: 'home',
           icon: 'home',
           noCache: true,
-          footTab: "footTabOne"
+          footTab: "footTabOne",
+          headTab: "headTabOne"
         }
       },
       {
@@ -37,7 +39,8 @@ export const constantRouterMap = [
           title: 'icons',
           icon: 'icons',
           noCache: true,
-          footTab: "footTabOne"
+          footTab: "footTabOne",
+          headTab: "headTabOne"
         }
       },
       {
