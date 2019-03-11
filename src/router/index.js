@@ -64,6 +64,16 @@ export const constantRouterMap = [
           noCache: true,
           footTab: "footTabOne"
         }
+      },
+      {
+        path: 'store',
+        component: _import('store/index'),
+        name: 'store',
+        meta: {
+          title: 'store',
+          icon: 'store',
+          noCache: true,
+        }
       }
     ]
   }

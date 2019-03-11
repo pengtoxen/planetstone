@@ -9,7 +9,7 @@
     </div>
     <div class="division-zone"></div>
     <div class="entrance">
-      <div class="entrance-item" v-for="(item, index) in entrance" :key="index">
+      <div class="entrance-item" v-for="(item, index) in entrance" :key="index" @click="linkeToUrl(item.target)">
         <svg-icon :icon-class="item.icon"/>
         <span class="entrance-title">{{item.title}}</span>
       </div>
@@ -91,22 +91,22 @@ export default {
       entrance: [
         {
           title: "新上橱柜",
-          target: "",
+          target: "/case",
           icon: "new"
         },
         {
           title: "热销橱柜",
-          target: "",
+          target: "/case",
           icon: "hot"
         },
         {
           title: "到店体验",
-          target: "",
+          target: "/store",
           icon: "location"
         },
         {
           title: "橱柜案例",
-          target: "",
+          target: "/case",
           icon: "album"
         }
       ],
@@ -173,7 +173,11 @@ export default {
     };
   },
   created() {},
-  methods: {},
+  methods: {
+    linkeToUrl(url) {
+      this.$router.push(url)
+    }
+  },
   components: {
     swiper,
     goodslist: datalist

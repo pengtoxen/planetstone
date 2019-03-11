@@ -5,7 +5,7 @@
         v-for="(item,index) in tabs"
         :key="index"
         :id="item.id"
-        :url="item.target"
+        :to="item.target"
         class="tab-icon-list"
       >
         <div class="tab-icon-item">
@@ -29,56 +29,56 @@ export default {
       color: "#01CEAD",
       tabs: [
         {
+          id: 0,
           name: "首页",
           icon: "home",
-          target: ""
+          target: "/home"
         },
         {
+          id: 1,
           name: "商品",
           icon: "goods",
-          target: ""
+          target: "/icons"
         },
         {
+          id: 2,
           name: "案例",
           icon: "discover",
-          target: ""
+          target: "/case"
         },
         {
+          id: 3,
           name: "购物车",
           icon: "cart",
-          target: ""
+          target: "/center"
         },
         {
+          id: 4,
           name: "我的",
           icon: "profile",
-          target: ""
+          target: "/center"
         }
       ]
     };
   },
-  methods: {},
-  watch: {
-    active: function(newVal, oldVal) {
-      switch (newVal) {
-        case 0:
-          this.$router.push("/home");
-          break;
-        case 1:
-          this.$router.push("/icons");
-          break;
-        case 2:
-          this.$router.push("/case");
-          break;
-        case 3:
-          this.$router.push("/center");
-          break;
-        case 4:
-          this.$router.push("/center");
-          break;
-      }
+  methods: {
+    activeTabBar() {
+      let routePath = this.$route.fullPath;
+      let routeActive = this.active;
+      this.tabs.some(function(item, index) {
+        if (routePath === item.target) {
+          routeActive = item.id;
+        }
+      });
+      this.active = routeActive;
     }
   },
-  created() {}
+  watch: {
+    $route: "activeTabBar"
+  },
+  created() {
+    this.activeTabBar();
+  }
 };
 </script>
 <style lang="scss" scoped>
