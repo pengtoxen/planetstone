@@ -101,6 +101,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.container {
+  padding-bottom: 50px !important;
+}
 .mui-slider {
   position: fixed;
   background-color: #fff;

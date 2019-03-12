@@ -61,14 +61,14 @@ export default {
         console.log("地图加载失败", e);
       }
     );
-    this.renderFootCss();
+    // this.renderFootCss();
   },
   methods: {
-    renderFootCss() {
-      if (this.$route.meta.footTabCss) {
-        document.getElementById("app-main-container").style.paddingBottom = "0";
-      }
-    }
+    // renderFootCss() {
+    //   if (this.$route.meta.footTabCss) {
+    //     document.getElementById("app-main-container").style.paddingBottom = "0";
+    //   }
+    // }
   },
   components: {}
 };

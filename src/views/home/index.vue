@@ -9,7 +9,12 @@
     </div>
     <div class="division-zone"></div>
     <div class="entrance">
-      <div class="entrance-item" v-for="(item, index) in entrance" :key="index" @click="linkeToUrl(item.target)">
+      <div
+        class="entrance-item"
+        v-for="(item, index) in entrance"
+        :key="index"
+        @click="linkeToUrl(item.target)"
+      >
         <svg-icon :icon-class="item.icon"/>
         <span class="entrance-title">{{item.title}}</span>
       </div>
@@ -175,7 +180,7 @@ export default {
   created() {},
   methods: {
     linkeToUrl(url) {
-      this.$router.push(url)
+      this.$router.push(url);
     }
   },
   components: {
@@ -189,6 +194,7 @@ export default {
 @import "@/styles/mixin.scss";
 .container {
   margin-top: 3rem;
+  padding-bottom: 50px !important;
 }
 .services-list {
   @include flexLayout(nowrap);

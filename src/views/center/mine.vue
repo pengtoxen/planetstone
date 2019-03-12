@@ -131,6 +131,7 @@ export default {
   padding-bottom: 0 !important;
   background-color: #fff !important;
   background-color: #eeeeee;
+  padding-bottom: 50px !important;
 }
 .padding {
   height: 0.7rem;
@@ -292,8 +293,8 @@ export default {
     border-bottom: 1px solid #e9e9e9;
     display: flex;
     justify-content: space-between;
-    height: 4rem;
-    line-height: 4rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
     &:nth-last-child(1) {
       border-bottom: none;
     }

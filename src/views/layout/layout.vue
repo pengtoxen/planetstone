@@ -99,7 +99,6 @@ export default {
 .app-main {
   min-height: 100vh;
   background-color: #fff;
-  padding-bottom: 50px;
 }
 .app-main-no-padding {
   min-height: 100vh;
