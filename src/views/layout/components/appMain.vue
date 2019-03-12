@@ -1,10 +1,10 @@
 <template>
-  <section class="app-main">
+  <div>
     <!-- <transition mode="out-in">
       <router-view></router-view>
     </transition>-->
     <router-view></router-view>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -13,12 +13,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.app-main {
-  min-height: 100%;
-  // background-color: #efeff4;
-  background-color: #fff;
-  padding-bottom: 50px;
-}
 .v-enter {
   opacity: 0;
   transform: translateX(100%);

@@ -3,7 +3,7 @@
     <headbar v-if="headTabOne" class="headbar-container"></headbar>
     <headbar v-else-if="headTabTwo"></headbar>
     <headbar v-else-if="headTabThree"></headbar>
-    <div class="main-container">
+    <div :class="['main-container',footTabCss]" id="app-main-container">
       <app-main></app-main>
     </div>
     <footbar v-if="footTabOne" class="footbar-container"></footbar>
@@ -14,7 +14,6 @@
 
 <script>
 import { Headbar, AppMain, Footbar } from "./components/index";
-
 export default {
   name: "Layout",
   data() {
@@ -24,7 +23,8 @@ export default {
       footTabThree: false,
       headTabOne: false,
       headTabTwo: false,
-      headTabThree: false
+      headTabThree: false,
+      footTabCss: "app-main"
     };
   },
   methods: {
@@ -49,7 +49,16 @@ export default {
       } else {
         this.headTabOne = this.headTabTwo = this.headTabThree = false;
       }
-      console.log(footTab);
+      this.renderTabCss(this.$route.meta);
+    },
+    renderTabCss() {
+      let css = this.$route.meta.footTabCss;
+      if (css) {
+        this.footTabCss = css;
+      } else {
+        this.footTabCss = "app-main";
+      }
+      console.log(this.footTabCss)
     }
   },
   created() {
@@ -84,7 +93,16 @@ export default {
 <style rel="stylesheet/scss" lang="scss" scoped>
 .app-wrapper {
   position: relative;
-  height: 100%;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
+}
+.app-main {
+  min-height: 100vh;
+  background-color: #fff;
+  padding-bottom: 50px;
+}
+.app-main-no-padding {
+  min-height: 100vh;
+  background-color: #fff;
 }
 </style>

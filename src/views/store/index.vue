@@ -7,9 +7,9 @@
     <div class="middle-content">
       <div class="middle-content-address">
         <div class="middle-content-address-content">台州椒江洪龙路198号山鑫市场</div>
-        <div class="middle-content-address-icon">
+        <router-link class="middle-content-address-icon" tag="div" to="/map">
           <svg-icon icon-class="navigate"/>
-        </div>
+        </router-link>
       </div>
       <div class="middle-content-tel">
         <div class="middle-content-tel-content">联系电话:13058898058</div>
@@ -20,7 +20,8 @@
     </div>
     <div class="bottom-content">
       <div class="bottom-content-title">工厂简介</div>
-      <div class="bottom-content-body">十多个三国杀公司的施氏光舌鲑
+      <div class="bottom-content-body">
+        十多个三国杀公司的施氏光舌鲑
         三个傻瓜萨嘎
         三个傻瓜
         是个
@@ -95,7 +96,6 @@ export default {
     }
   }
   .bottom-content {
-    min-height: 100vh;
     padding: 0 1rem;
     .bottom-content-title {
       font-size: 1.5rem;

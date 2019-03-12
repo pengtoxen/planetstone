@@ -73,6 +73,18 @@ export const constantRouterMap = [
           title: 'store',
           icon: 'store',
           noCache: true,
+          footTabCss: 'app-main-no-padding'
+        }
+      },
+      {
+        path: 'map',
+        component: _import('store/map'),
+        name: 'map',
+        meta: {
+          title: 'map',
+          icon: '',
+          noCache: true,
+          footTabCss: 'app-main-no-padding'
         }
       }
     ]
