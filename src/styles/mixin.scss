@@ -44,3 +44,33 @@
 @mixin greyBgc {
   background-color:$baseBgc2
 }
+
+@mixin toGray {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+}
+
+// 购物车-加减
+.cart-content-list-total-item-box-details-info-count{
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+  vertical-align: middle;
+  display: inline-block;
+  float: right;
+  .van-stepper{
+    display: flex;
+    justify-content: flex-end;
+    height: 30px;
+    .van-stepper__input,input[type=number]{
+      width: 20%;
+      padding: 0 !important;
+      height: 26px;
+      border: 0;
+    }
+  }
+}

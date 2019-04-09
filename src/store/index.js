@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import errorLog from '@/store/modules/errorLog'
-// import user from '@s/modules/user'
+import user from '@/store/modules/user'
 import getters from '@/store/getters'
 
 Vue.use(Vuex)
@@ -9,7 +9,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   modules: {
     errorLog,
-    // user
+    user
   },
   getters
 })

@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function edit(data) {
+export function editUserInfo(data) {
   return request({
     url: 'Admin/User/edit',
     method: 'post',

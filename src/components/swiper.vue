@@ -1,32 +1,58 @@
 <template>
   <div>
-    <van-swipe :autoplay="3000">
-      <van-swipe-item v-for="(item, index) in settingData.$photoList" :key="index">
-        <router-link
-          :v-lazy="item.img"
-          :src="item.img"
-          :class="{'full':settingData.$isFull}"
-          tag="img"
-          to="item.target"
-        ></router-link>
-      </van-swipe-item>
-    </van-swipe>
+    <swiper
+      :list="photoList"
+      :show-dots="showDots"
+      :show-desc-mask="showDescMask"
+      :auto="auto"
+      :loop="loop"
+      :height="height"
+    >
+      <!-- <swiper-item v-for="(item, index) in photoList" :key="index">
+        <img :src="item.img" tag="img"/>
+      </swiper-item>-->
+    </swiper>
   </div>
 </template>
 
 <script>
+import { Swiper, SwiperItem } from "vux";
 export default {
   data() {
-    return {
-      settingData: {
-        $photoList: this.photoList ? this.photoList : [],
-        $isFull: this.isFull ? this.isFull : true
-      }
-    };
+    return {};
   },
   created() {},
   methods: {},
-  props: ["photoList", "isFull"]
+  props: {
+    photoList: {
+      type: Array,
+      default: []
+    },
+    showDots: {
+      type: Boolean,
+      default: true
+    },
+    showDescMask: {
+      type: Boolean,
+      default: true
+    },
+    auto: {
+      type: Boolean,
+      default: false
+    },
+    loop: {
+      type: Boolean,
+      default: false
+    },
+    height: {
+      type: String,
+      default: "200px"
+    }
+  },
+  components: {
+    Swiper,
+    SwiperItem
+  }
 };
 </script>
 

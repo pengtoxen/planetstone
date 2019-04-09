@@ -1,14 +1,22 @@
 import Vue from 'vue'
-import { Toast } from 'vant';
-Vue.use(Toast);
+import { ToastPlugin } from 'vux';
+Vue.use(ToastPlugin);
 import Clipboard from 'clipboard'
 
 function clipboardSuccess() {
-  Toast.success('复制成功');
+  Vue.$vux.toast.show({
+    type: 'text',
+    position: 'middle',
+    text: '复制成功'
+  })
 }
 
 function clipboardError() {
-  Toast.fail('复制失败');
+  Vue.$vux.toast.show({
+    type: 'text',
+    position: 'middle',
+    text: '复制失败'
+  })
 }
 
 export default function handleClipboard(text, event) {

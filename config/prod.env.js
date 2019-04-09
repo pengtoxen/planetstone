@@ -2,7 +2,7 @@
 module.exports = {
   NODE_ENV: '"production"',
   ENV_CONFIG: '"dev"',
-  BASE_API: '"http://www.fossilhunter.cn"',
+  BASE_API: '"https://dev.unionglasses.com"',
   TECENT_KEY: '"key:Y2TBZ-YWHRU-NABVY-B5BOY-N7NW6-DOB5K"',
   DISTRICT_URL: '"http://apis.map.qq.com/ws/district/v1/getchildren?key="',
   UPLOAD_URL: '"http://upload.qiniup.com"',

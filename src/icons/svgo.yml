@@ -6,4 +6,5 @@ removeEmptyAttrs: true
 removeEmptyContainers: true
 convertPathData: true
 removeXMLProcInst: true
+removeUselessStrokeAndFill: true
 

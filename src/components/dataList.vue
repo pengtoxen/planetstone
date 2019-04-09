@@ -8,10 +8,10 @@
       @load="onLoad"
     >
       <div
-        class="data-item"
+        :class="['data-item',settingData.$param.cond ? settingData.$param.css : '']"
         v-for="(item,index) in settingData.$list"
         :key="index"
-        @click="doTask(settingData.$param)"
+        @click="doTask(item,settingData.$param)"
       >
         <img :src="item.img_url" alt>
         <slot name="one" :oneData="item"></slot>
@@ -49,8 +49,9 @@ export default {
         }
       }, 1000);
     },
-    doTask(param) {
+    doTask(item, param) {
       this.$router.push({ name: this.target, params: param });
+      this.$emit("func", item);
     }
   },
   props: [
@@ -70,49 +71,21 @@ export default {
 .data-list {
   display: flex;
   flex-wrap: wrap;
-  padding: 7px;
+  padding: 0.07rem;
   justify-content: space-between;
 
   .data-item {
     width: 49%;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 8px #ccc;
-    margin: 4px 0;
-    padding: 2px;
+    border: 0.01rem solid #ccc;
+    box-shadow: 0 0 0.08rem #ccc;
+    margin: 0.04rem 0;
+    padding: 0.02rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 200px;
+    min-height: 2rem;
     img {
       width: 100%;
-    }
-    .title {
-      font-size: 14px;
-    }
-
-    .info {
-      background-color: #eee;
-      p {
-        margin: 0;
-        padding: 5px;
-      }
-      .price {
-        .now {
-          color: red;
-          font-weight: bold;
-          font-size: 16px;
-        }
-        .old {
-          text-decoration: line-through;
-          font-size: 12px;
-          margin-left: 10px;
-        }
-      }
-      .sell {
-        display: flex;
-        justify-content: space-between;
-        font-size: 13px;
-      }
     }
   }
 }

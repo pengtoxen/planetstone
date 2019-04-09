@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from '@/App.vue'
 import router from '@/router/index'
 import store from '@/store/index'
+import '../src/utils/vant'
 
 //全局配置
 import '@/init/index'

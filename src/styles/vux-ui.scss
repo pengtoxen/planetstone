@@ -1,0 +1,9 @@
+//覆盖一些vux-ui样式
+.weui-toast__content {
+  font-size: 16px;
+  color: #fff !important;
+}
+.vux-slider > .vux-swiper > .vux-swiper-item > a > .vux-swiper-desc {
+  height: 0.5rem !important;
+  font-size: 0.14rem !important;
+}

@@ -1,60 +1,66 @@
-import { loginByUsername, getUserInfo } from '@a/login'
-import { logout } from '@a/user'
+import { loginByUsername, getUserInfo } from '@/api/login'
+import { editUserInfo } from '@/api/user'
+import { logout } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
   state: {
-    user: '',
-    status: '',
-    code: '',
     token: getToken(),
-    name: '',
-    username: '',
-    avatar: '',
-    introduction: '',
-    roles: [],
+    userInfo: {
+      uid: 101,
+      avatar: "http://thirdwx.qlogo.cn/mmopen/TAurpzzE1aYKJ3rlNhlbIDPKCpQic3IjXA5TFYXLg1Iq0iaX2pMYFVdXy53Um46iaronDMnRsA5Udlu30D9XDRMWzGNwiaQhQgGic/132",
+      name: 'peng',
+      sex: '男',
+      birthday: "1987-01-08",
+      phone: "18658318156",
+      email: "82912094@qq.com",
+      zone: ["320000", "320100"],
+      joinTime: "2018-11-02",
+      erpScore: 150,
+    },
   },
 
   mutations: {
-    SET_CODE: (state, code) => {
-      state.code = code
-    },
     SET_TOKEN: (state, token) => {
       state.token = token
     },
-    SET_INTRODUCTION: (state, introduction) => {
-      state.introduction = introduction
+    SET_USERINFO: (state, userInfo) => {
+      state.userInfo = userInfo
     },
-    SET_SETTING: (state, setting) => {
-      state.setting = setting
+    SET_USER_NAME: (state, name) => {
+      state.userInfo.name = name
     },
-    SET_STATUS: (state, status) => {
-      state.status = status
+    SET_USER_SEX: (state, sex) => {
+      state.userInfo.sex = sex
     },
-    SET_NAME: (state, name) => {
-      state.name = name
+    SET_USER_BIRTHDAY: (state, birthday) => {
+      state.userInfo.birthday = birthday
     },
-    SET_USERNAME: (state, username) => {
-      state.username = username
+    SET_USER_PHONE: (state, phone) => {
+      state.userInfo.phone = phone
     },
-    SET_AVATAR: (state, avatar) => {
-      state.avatar = process.env.QINIU_URL + '/' + avatar
+    SET_USER_EMAIL: (state, email) => {
+      state.userInfo.phone = email
     },
-    SET_ROLES: (state, roles) => {
-      state.roles = roles
-    }
+    SET_USER_ZONE: (state, zone) => {
+      state.userInfo.zone = zone
+    },
+    SET_USER_ERP_SCORE: (state, erpScore) => {
+      state.userInfo.erpScore = erpScore
+    },
   },
 
   actions: {
     // 用户名登录
     LoginByUsername({ commit }, userInfo) {
-      const username = userInfo.username.trim()
-      const password = userInfo.password.trim()
+      const username = userInfo.account.trim()
+      const password = userInfo.phone.trim()
       return new Promise((resolve, reject) => {
         loginByUsername(username, password).then(response => {
           const data = response.data
-          commit('SET_TOKEN', data.data)
-          setToken(response.data.data)
+          commit('SET_TOKEN', data.token)
+          setToken(data.token)
+          commit('SET_USERINFO', data.userInfo)
           resolve()
         }).catch(error => {
           reject(error)
@@ -70,11 +76,7 @@ const user = {
             reject('error')
           }
           const data = response.data.data
-          commit('SET_ROLES', data.roles)
-          commit('SET_NAME', data.name)
-          commit('SET_USERNAME', data.username)
-          commit('SET_AVATAR', data.avatar)
-          commit('SET_INTRODUCTION', data.introduction)
+          commit('SET_USERINFO', data.userInfo)
           resolve(response)
         }).catch(error => {
           reject(error)
@@ -82,35 +84,11 @@ const user = {
       })
     },
 
-    // 更新用户信息
-    RefreshUinfo({ commit }, userInfo) {
-      return new Promise((resolve, reject) => {
-        commit('SET_NAME', userInfo.nickname)
-        commit('SET_AVATAR', userInfo.avatar)
-        resolve()
-      })
-    },
-
-    // 第三方验证登录
-    // LoginByThirdparty({ commit, state }, code) {
-    //   return new Promise((resolve, reject) => {
-    //     commit('SET_CODE', code)
-    //     loginByThirdparty(state.status, state.email, state.code).then(response => {
-    //       commit('SET_TOKEN', response.data.token)
-    //       setToken(response.data.token)
-    //       resolve()
-    //     }).catch(error => {
-    //       reject(error)
-    //     })
-    //   })
-    // },
-
     // 登出
     LogOut({ commit, state }) {
       return new Promise((resolve, reject) => {
         logout(state.token).then(() => {
           commit('SET_TOKEN', '')
-          commit('SET_ROLES', [])
           removeToken()
           resolve()
         }).catch(error => {
@@ -128,21 +106,107 @@ const user = {
       })
     },
 
-    // 动态修改权限
-    ChangeRoles({ commit }, role) {
-      return new Promise(resolve => {
-        commit('SET_TOKEN', role)
-        setToken(role)
-        getUserInfo(role).then(response => {
-          const data = response.data
-          commit('SET_ROLES', data.roles)
-          commit('SET_NAME', data.name)
-          commit('SET_AVATAR', data.avatar)
-          commit('SET_INTRODUCTION', data.introduction)
-          resolve()
+    //更改用户名
+    SetUserName({ commit, state }, name) {
+      return new Promise((resolve, reject) => {
+        editUserInfo({ name: name }).then(response => {
+          if (response.code === 1) {
+            reject('error')
+          }
+          const data = response.data.data
+          commit('SET_USER_NAME', data.userInfo.name)
+          resolve(response)
+        }).catch(error => {
+          reject(error)
         })
       })
-    }
+    },
+
+    //更改性别
+    SetUserSex({ commit, state }, sex) {
+      return new Promise((resolve, reject) => {
+        editUserInfo({ sex: sex }).then(response => {
+          if (response.code === 1) {
+            reject('error')
+          }
+          const data = response.data.data
+          commit('SET_USER_SEX', data.userInfo.sex)
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+
+    //更改生日
+    SetUserBirthday({ commit, state }, birthday) {
+      console.log(birthday)
+      return new Promise((resolve, reject) => {
+        editUserInfo({ birthday: birthday }).then(response => {
+          if (response.code === 1) {
+            reject('error')
+          }
+          const data = response.data.data
+          commit('SET_USER_BIRTHDAY', data.userInfo.birthday)
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+
+    //更改手机
+    SetUserPhone({ commit, state }, phone) {
+      return new Promise((resolve, reject) => {
+        editUserInfo({ phone: phone }).then(response => {
+          if (response.code === 1) {
+            reject('error')
+          }
+          const data = response.data.data
+          commit('SET_USER_PHONE', data.userInfo.phone)
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+
+    //更改email
+    SetUserEmail({ commit, state }, email) {
+      return new Promise((resolve, reject) => {
+        editUserInfo({ email: email }).then(response => {
+          if (response.code === 1) {
+            reject('error')
+          }
+          const data = response.data.data
+          commit('SET_USER_EMAIL', data.userInfo.email)
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+
+    //更改地区
+    SetUserZone({ commit, state }, zone) {
+      return new Promise((resolve, reject) => {
+        editUserInfo({ zone: zone }).then(response => {
+          if (response.code === 1) {
+            reject('error')
+          }
+          const data = response.data.data
+          commit('SET_USER_ZONE', data.userInfo.zone)
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+
+    //更改ERP积分
+    SetUserERPScore({ commit, state }, erpScore) {
+      commit('SET_USER_ERP_SCORE', erpScore)
+    },
   }
 }
 

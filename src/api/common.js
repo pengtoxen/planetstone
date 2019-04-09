@@ -1,24 +1,8 @@
 import request from '@/utils/request'
 
-export function fossilClassification(data) {
+export function getMsgCode(data) {
   return request({
-    url: 'Admin/Open/fClassification',
-    method: 'post',
-    data
-  })
-}
-
-export function geoAge(data) {
-  return request({
-    url: 'Admin/Open/geoAge',
-    method: 'post',
-    data
-  })
-}
-
-export function location(data) {
-  return request({
-    url: 'Admin/Open/location',
+    url: 'Mall/Login/getCode/fhelz5/',
     method: 'post',
     data
   })

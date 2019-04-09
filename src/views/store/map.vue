@@ -25,9 +25,9 @@ export default {
       //   });
       // },
       qq => {
-        var myLatlng = new qq.maps.LatLng(39.916527, 116.397128);
+        var myLatlng = new qq.maps.LatLng(28.619101, 121.400862);
         var myOptions = {
-          zoom: 8,
+          zoom: 14,
           center: myLatlng,
           mapTypeId: qq.maps.MapTypeId.ROADMAP
         };
@@ -35,7 +35,13 @@ export default {
           document.getElementById("container"),
           myOptions
         );
-        var center = new qq.maps.LatLng(39.916527, 116.397128);
+        console.log(qq.maps.ALIGN);
+        var scaleControl = new qq.maps.ScaleControl({
+          align: qq.maps.ALIGN.BOTTOM_LEFT,
+          margin: qq.maps.Size(0, 0),
+          map: that.map
+        });
+        var center = new qq.maps.LatLng(28.619101, 121.400862);
         // 创建标记
         var marker = new qq.maps.Marker({
           // 标记的位置
@@ -46,16 +52,22 @@ export default {
         var info = new qq.maps.InfoWindow({
           map: that.map
         });
-        // 悬浮标记显示信息
-        qq.maps.event.addListener(marker, "mouseover", function() {
-          console.log(11)
+        //获取标记的点击事件
+        qq.maps.event.addListener(marker, "click", function() {
           info.open();
-          info.setContent(`<div style="margin:10px;">123</div>`);
+          info.setContent(
+            '<div style="text-align:center;white-space:nowrap;' +
+              'margin:10px;">单击标记</div>'
+          );
           info.setPosition(center);
         });
-        qq.maps.event.addListener(marker, "mouseout", function() {
-          info.close();
-        });
+        //给地图添加点击事件
+        //并获取鼠标点击的经纬度
+        // qq.maps.event.addListener(that.map, "click", function(event) {
+        //   this.longitude = event.latLng.getLat();
+        //   this.latitude = event.latLng.getLng();
+        //   alert("经度:" + this.longitude + "," + "纬度:" + this.latitude);
+        // });
       },
       e => {
         console.log("地图加载失败", e);

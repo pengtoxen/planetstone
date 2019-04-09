@@ -1,20 +1,55 @@
-exports.install = function (Vue, options) {
-  Vue.prototype.$peng = {
-    scope: this,
-    bindScope: function (that) {
-      this.scope = that
-    },
-    deBindScope: function () {
-      this.scope = this
-    },
+export default function (Vue, options) {
+  Vue.prototype.$$ = {
+    // scope: this,
+    // bindScope: function (that) {
+    //   this.scope = that
+    // },
+    // deBindScope: function () {
+    //   this.scope = this
+    // },
     msgOk: function (message) {
-      Toast.success(message);
+      Vue.$vux.toast.show({
+        type: 'success',
+        position: 'middle',
+        text: message,
+      });
     },
     msgErr: function (message) {
-      Toast.fail(message);
+      Vue.$vux.toast.show({
+        type: 'cancel',
+        position: 'middle',
+        text: message
+      });
     },
     msgInf: function (message) {
-      Toast(message);
+      Vue.$vux.toast.show({
+        type: 'text',
+        position: 'middle',
+        text: message
+      });
+    },
+    msgWarn: function (message) {
+      Vue.$vux.toast.show({
+        type: 'warn',
+        position: 'middle',
+        text: message
+      });
+    },
+    msgAlert: function (title = '', content = '', showcb = null, hidecb = null) {
+      Vue.$vux.alert.show({
+        title: title,
+        content: content,
+        onShow() {
+          if (showcb) {
+            showcb();
+          }
+        },
+        onHide() {
+          if (hidecb) {
+            hidecb();
+          }
+        }
+      })
     },
     uuidv4: function () {
       return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -368,6 +403,214 @@ exports.install = function (Vue, options) {
         return [].slice.call(obj)
       }
       return null
+    },
+    isvalidUsername: function (str) {
+      const reg = /^[A-Za-z0-9]+$/
+      return reg.test(str)
+    },
+    validateURL: function (textval) {
+      const urlregex = /^(https?|ftp):\/\/([a-zA-Z0-9.-]+(:[a-zA-Z0-9.&%$-]+)*@)*((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(:[0-9]+)*(\/($|[a-zA-Z0-9.,?'\\+&%$#=~_-]+))*$/
+      return urlregex.test(textval)
+    },
+    validateLowerCase: function (str) {
+      const reg = /^[a-z]+$/
+      return reg.test(str)
+    },
+    validateUpperCase: function (str) {
+      const reg = /^[A-Z]+$/
+      return reg.test(str)
+    },
+    validatAlphabets: function (str) {
+      const reg = /^[A-Za-z]+$/
+      return reg.test(str)
+    },
+    validateEmail: function (email) {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(email)
+    },
+    createUniqueString: function () {
+      const timestamp = +new Date() + ''
+      const randomNum = parseInt((1 + Math.random()) * 65536) + ''
+      return (+(randomNum + timestamp)).toString(32)
+    },
+    parseTime: function (time, cFormat) {
+      if (arguments.length === 0) {
+        return null
+      }
+      const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}'
+      let date
+      if (typeof time === 'object') {
+        date = time
+      } else {
+        if (('' + time).length === 10) time = parseInt(time) * 1000
+        date = new Date(time)
+      }
+      const formatObj = {
+        y: date.getFullYear(),
+        m: date.getMonth() + 1,
+        d: date.getDate(),
+        h: date.getHours(),
+        i: date.getMinutes(),
+        s: date.getSeconds(),
+        a: date.getDay()
+      }
+      const time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
+        let value = formatObj[key]
+        if (key === 'a') return ['一', '二', '三', '四', '五', '六', '日'][value - 1]
+        if (result.length > 0 && value < 10) {
+          value = '0' + value
+        }
+        return value || 0
+      })
+      return time_str
+    },
+    formatTime: function (time, option) {
+      time = +time * 1000
+      const d = new Date(time)
+      const now = Date.now()
+
+      const diff = (now - d) / 1000
+
+      if (diff < 30) {
+        return '刚刚'
+      } else if (diff < 3600) { // less 1 hour
+        return Math.ceil(diff / 60) + '分钟前'
+      } else if (diff < 3600 * 24) {
+        return Math.ceil(diff / 3600) + '小时前'
+      } else if (diff < 3600 * 24 * 2) {
+        return '1天前'
+      }
+      if (option) {
+        return parseTime(time, option)
+      } else {
+        return d.getMonth() + 1 + '月' + d.getDate() + '日' + d.getHours() + '时' + d.getMinutes() + '分'
+      }
+    },
+    getQueryObject: function (url) {
+      url = url == null ? window.location.href : url
+      const search = url.substring(url.lastIndexOf('?') + 1)
+      const obj = {}
+      const reg = /([^?&=]+)=([^?&=]*)/g
+      search.replace(reg, (rs, $1, $2) => {
+        const name = decodeURIComponent($1)
+        let val = decodeURIComponent($2)
+        val = String(val)
+        obj[name] = val
+        return rs
+      })
+      return obj
+    },
+    getByteLen: function (val) {
+      let len = 0
+      for (let i = 0; i < val.length; i++) {
+        if (val[i].match(/[^\x00-\xff]/ig) != null) {
+          len += 1
+        } else { len += 0.5 }
+      }
+      return Math.floor(len)
+    },
+    cleanArray: function (actual) {
+      const newArray = []
+      for (let i = 0; i < actual.length; i++) {
+        if (actual[i]) {
+          newArray.push(actual[i])
+        }
+      }
+      return newArray
+    },
+    cleanParam: function (json) {
+      if (!json) return ''
+      return cleanArray(Object.keys(json).map(key => {
+        if (json[key] === undefined) return ''
+        return encodeURIComponent(key) + '=' +
+          encodeURIComponent(json[key])
+      })).join('&')
+    },
+    param2Obj: function (url) {
+      const search = url.split('?')[1]
+      if (!search) {
+        return {}
+      }
+      return JSON.parse('{"' + decodeURIComponent(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
+    },
+    html2Text: function (val) {
+      const div = document.createElement('div')
+      div.innerHTML = val
+      return div.textContent || div.innerText
+    },
+    objectMerge: function (target, source) {
+      if (typeof target !== 'object') {
+        target = {}
+      }
+      if (Array.isArray(source)) {
+        return source.slice()
+      }
+      for (const property in source) {
+        if (source.hasOwnProperty(property)) {
+          const sourceProperty = source[property]
+          if (typeof sourceProperty === 'object') {
+            target[property] = objectMerge(target[property], sourceProperty)
+            continue
+          }
+          target[property] = sourceProperty
+        }
+      }
+      return target
+    },
+    getTime: function (type) {
+      if (type === 'start') {
+        return new Date().getTime() - 3600 * 1000 * 24 * 90
+      } else {
+        return new Date(new Date().toDateString())
+      }
+    },
+    debounce: function (func, wait, immediate) {
+      let timeout, args, context, timestamp, result
+      const later = function () {
+        // 据上一次触发时间间隔
+        const last = +new Date() - timestamp
+        // 上次被包装函数被调用时间间隔last小于设定时间间隔wait
+        if (last < wait && last > 0) {
+          timeout = setTimeout(later, wait - last)
+        } else {
+          timeout = null
+          // 如果设定为immediate===true，因为开始边界已经调用过了此处无需调用
+          if (!immediate) {
+            result = func.apply(context, args)
+            if (!timeout) context = args = null
+          }
+        }
+      }
+      return function (...args) {
+        context = this
+        timestamp = +new Date()
+        const callNow = immediate && !timeout
+        // 如果延时不存在，重新设定延时
+        if (!timeout) timeout = setTimeout(later, wait)
+        if (callNow) {
+          result = func.apply(context, args)
+          context = args = null
+        }
+
+        return result
+      }
+    },
+    deepClone: function (source) {
+      if (!source && typeof source !== 'object') {
+        throw new Error('error arguments', 'shallowClone')
+      }
+      const targetObj = source.constructor === Array ? [] : {}
+      for (const keys in source) {
+        if (source.hasOwnProperty(keys)) {
+          if (source[keys] && typeof source[keys] === 'object') {
+            targetObj[keys] = source[keys].constructor === Array ? [] : {}
+            targetObj[keys] = deepClone(source[keys])
+          } else {
+            targetObj[keys] = source[keys]
+          }
+        }
+      }
+      return targetObj
     }
   }
 }

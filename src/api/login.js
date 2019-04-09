@@ -1,20 +1,23 @@
 import request from '@/utils/request'
 
-export function loginByUsername(username, password) {
-  const data = {
-    username,
-    password
-  }
+export function bindingToErp(data) {
   return request({
-    url: 'Admin/Login/login',
+    url: 'Mall/Login/login',
     method: 'post',
     data
   })
 }
 
+export function loginByUsername(token) {
+  return request({
+    url: 'Mall/User/info',
+    method: 'post'
+  })
+}
+
 export function getUserInfo(token) {
   return request({
-    url: 'Admin/User/info',
+    url: 'Mall/User/info',
     method: 'post'
   })
 }
