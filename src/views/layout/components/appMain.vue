@@ -1,15 +1,39 @@
 <template>
   <div>
     <!-- <transition mode="out-in">
-      <router-view></router-view>
+            <router-view></router-view>
     </transition>-->
-    <router-view></router-view>
+    <keep-alive :include="cachedViews">
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script>
 export default {
-  name: "AppMain"
+  name: "AppMain",
+  computed: {
+    cachedViews() {
+      let views = this.$store.getters.cachedViews;
+      return views ? views.map(v => v.name) : [];
+    }
+  },
+  methods: {
+    addCachedViews() {
+      if (!this.$route.name) {
+        return false;
+      }
+      this.$store.dispatch("addCachedViews", this.$route);
+    }
+  },
+  created: function() {
+    this.addCachedViews();
+  },
+  watch: {
+    $route() {
+      this.addCachedViews();
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -27,4 +51,3 @@ export default {
   transition: all 0.3s ease;
 }
 </style>
-

@@ -25,10 +25,10 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 3rem;
+  height: 0.3rem;
   z-index: 1000;
   background-color: #fff;
-  padding: 0 1rem;
+  padding: 0 0.1rem;
   border-bottom: 1px solid #ccc;
   @include greyBgc;
   .brand {

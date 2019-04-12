@@ -48,65 +48,65 @@ export default {
 @import "@/styles/mixin.scss";
 .container {
   .header-content {
-    height: 13rem;
     .header-content-top {
-      height: 8rem;
+      height: 0.8rem;
       @include greenBgc;
       color: white;
       font-weight: 700;
-      line-height: 8rem;
+      line-height: 0.8rem;
       text-align: center;
-      font-size: 2.2rem;
+      font-size: 0.22rem;
     }
     .header-content-bottom {
-      height: 5rem;
+      height: 0.5rem;
       @include greenColor;
       font-weight: 500;
-      line-height: 5rem;
+      line-height: 0.5rem;
       text-align: center;
-      font-size: 1.5rem;
+      font-size: 0.15rem;
     }
   }
   .middle-content {
-    height: 10rem;
+    height: 1rem;
     color: #999;
-    padding: 0 1rem;
+    padding: 0 0.1rem;
     .middle-content-address {
       @include flexLayout(nowrap, row, space-between);
       border-bottom: 2px solid #f8f8f8;
-      height: 4rem;
-      font-size: 1.3rem;
+      height: 0.4rem;
+      font-size: 0.13rem;
     }
     .middle-content-tel {
       @include flexLayout(nowrap, row, space-between);
       border-bottom: 2px solid #f8f8f8;
-      height: 4rem;
-      font-size: 1.5rem;
+      height: 0.4rem;
+      font-size: 0.13rem;
     }
     .middle-content-address-content,
     .middle-content-tel-content {
-      height: 4rem;
-      line-height: 4rem;
+      height: 0.4rem;
+      line-height: 0.4rem;
+      font-size: 0.13rem;
     }
     .middle-content-address-icon,
     .middle-content-tel-icon {
-      width: 5rem;
+      width: 0.5rem;
       border-left: 3px solid #f8f8f8;
       @include greenColor;
-      font-size: 2.2rem;
+      font-size: 0.22rem;
       display: flex;
       justify-content: center;
     }
   }
   .bottom-content {
-    padding: 0 1rem;
+    padding: 0 0.1rem;
     .bottom-content-title {
-      font-size: 1.5rem;
+      font-size: 0.15rem;
     }
     .bottom-content-body {
-      font-size: 1rem;
+      font-size: 0.1rem;
       @include greyColor;
-      padding-top: 1rem;
+      padding-top: 0.1rem;
     }
   }
 }

@@ -193,60 +193,59 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/mixin.scss";
 .container {
-  margin-top: 3rem;
-  padding-bottom: 50px !important;
+  padding-bottom: 0.5rem !important;
 }
 .services-list {
   @include flexLayout(nowrap);
   @include greenColor;
-  font-size: 1rem;
-  height: 3rem;
+  font-size: 0.01rem;
+  height: 0.3rem;
 }
 .division-zone {
-  height: 1rem;
+  height: 0.01rem;
   @include greyBgc;
 }
 .entrance {
   @include flexLayout(nowrap);
-  padding: 1rem 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0.1rem 0.05rem;
+  padding-bottom: 0.05rem;
   background-color: #fff;
   color: #999;
-  font-size: 2.5rem;
+  font-size: 0.25rem;
   .entrance-item {
     @include flexLayout(nowrap, column, space-between);
     width: 49%;
     .entrance-title {
-      font-size: 1.3rem;
+      font-size: 0.13rem;
     }
   }
 }
 .module-one-title,
 .module-two-title,
 .module-three-title {
-  padding: 0.5rem 1rem;
+  padding: 0.05rem 0.1rem;
   background-color: #fff;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.01rem;
   @include flexLayout(nowrap, column);
   .title {
     font-weight: 700;
-    font-size: 1.8rem;
+    font-size: 0.18rem;
   }
   .sub-title {
-    font-size: 1rem;
+    font-size: 0.1rem;
     color: #999;
   }
 }
 .module-one /deep/ .data-list {
   @include flexLayout(wrap, row, space-between);
   background-color: #fff;
-  margin-bottom: 0.5rem;
-  margin-top: -0.5rem;
+  margin-bottom: 0.05rem;
+  margin-top: -0.05rem;
   padding: 0;
   .data-item {
     width: 100%;
-    box-shadow: 0 0 0.8rem #ccc;
-    margin: 0.5rem 0;
+    box-shadow: 0 0 0.08rem #ccc;
+    margin: 0.05rem 0;
     margin-top: 0;
     padding: 0;
     display: flex;
@@ -261,13 +260,13 @@ export default {
 .module-two /deep/ .data-list {
   @include flexLayout(wrap, row, space-between);
   background-color: #fff;
-  margin-bottom: 0.5rem;
-  margin-top: -0.5rem;
+  margin-bottom: 0.05rem;
+  margin-top: -0.05rem;
   padding: 0;
   .data-item {
     width: 100%;
-    box-shadow: 0 0 0.8rem #ccc;
-    margin: 0.5rem 0;
+    box-shadow: 0 0 0.08rem #ccc;
+    margin: 0.05rem 0;
     margin-top: 0;
     padding: 0;
     display: flex;
@@ -282,25 +281,25 @@ export default {
 .goods-info {
   @include flexLayout(nowrap, column, space-around, flex-start);
   color: black;
-  padding-bottom: 0.3rem;
+  padding-bottom: 0.03rem;
   .goods-name {
     color: #999;
-    font-size: 1rem;
-    padding-top: 0.5rem;
+    font-size: 0.1rem;
+    padding-top: 0.05rem;
   }
   .goods-price {
-    font-size: 1.3rem;
+    font-size: 0.13rem;
     font-weight: 600;
   }
   .goods-tags {
-    font-size: 0.8rem;
-    height: 1.3rem;
-    line-height: 1.3rem;
+    font-size: 0.08rem;
+    height: 0.13rem;
+    line-height: 0.13rem;
     @include flexLayout(nowrap, row, flex-start, center);
     .goods-tag {
       border: 1px solid #999;
       border-radius: 4px;
-      margin: 0 0.2rem;
+      margin: 0 0.02rem;
     }
   }
 }

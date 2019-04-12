@@ -8,3 +8,11 @@ export function getMsgCode(data) {
   })
 }
 
+export function getWxConfig(data) {
+  return request({
+    url: 'Mall/wxpai',
+    method: 'post',
+    data
+  })
+}
+

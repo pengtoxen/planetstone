@@ -8,14 +8,6 @@ Vue.use(Router)
 import Layout from '../views/layout/layout.vue'
 
 export const constantRouterMap = [
-  // zym
-  { path: '/detail', component: _import('detail/detail') },
-  { path: '/order', component: _import('orders/order')},
-  { path: '/binding', component: _import('login/binding'), hidden: true },
-  { path: '/binding/list', component: _import('login/bindingList'), hidden: true },
-  { path: '/register', component: _import('login/register'), hidden: true },
-  { path: '/register/list', component: _import('login/registerList'), hidden: true },
-  { path: '/coupon', component: _import('coupon/index'), hidden: true },
   // { path: '/test', component: _import('test/test'), hidden: true },
   // { path: '/404', component: _import('errorPage/404'), hidden: true },
   // { path: '/401', component: _import('errorPage/401'), hidden: true },
@@ -125,19 +117,17 @@ export const constantRouterMap = [
           noCache: true,
           footTabCss: 'app-main-no-padding'
         },
-        children: [
-          {
-            path: 'map',
-            component: _import('store/map'),
-            name: 'map',
-            meta: {
-              title: 'map',
-              icon: '',
-              noCache: true,
-              footTabCss: 'app-main-no-padding'
-            }
-          },
-        ]
+      },
+      {
+        path: '/map',
+        component: _import('store/map'),
+        name: 'map',
+        meta: {
+          title: 'map',
+          icon: '',
+          noCache: true,
+          footTabCss: 'app-main-no-padding'
+        }
       },
       {
         path: '/search',

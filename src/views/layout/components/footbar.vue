@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     activeTabBar() {
-      let routePath = this.$route.fullPath;
+      let routePath = this.$route.path;
       let routeActive = this.active;
       this.tabs.some(function(item, index) {
         if (routePath === item.target) {
@@ -87,17 +87,17 @@ export default {
   justify-content: space-around;
   align-items: center;
   color: #5f5f5f;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.05rem;
   .tab-icon-item {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     .tab-icon {
-      font-size: 2.2rem;
+      font-size: 0.22rem;
     }
     .tab-icon-name {
-      font-size: 1.17rem;
+      font-size: 0.117rem;
     }
   }
 }
@@ -105,4 +105,3 @@ export default {
   color: rgb(1, 206, 173) !important;
 }
 </style>
-
