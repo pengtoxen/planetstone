@@ -127,58 +127,58 @@ export default {
 
 <style lang="scss" scoped>
 .mine-container {
-  padding: 0 0.7rem;
+  padding: 0 0.07rem;
   padding-bottom: 0 !important;
   background-color: #fff !important;
   background-color: #eeeeee;
   padding-bottom: 50px !important;
 }
 .padding {
-  height: 0.7rem;
+  height: 0.07rem;
 }
 .mine-border {
-  height: 15rem;
-  border-radius: 0.4rem;
+  height: 1.5rem;
+  border-radius: 0.04rem;
   background-color: #01cead;
-  box-shadow: 0.6rem 0.6rem 0.6rem #ddd;
+  box-shadow: 0.06rem 0.06rem 0.06rem #ddd;
   .mine-border-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 1rem;
+    padding-top: 0.1rem;
     .min-border-top-left {
       display: flex;
       justify-content: space-between;
       align-items: center;
       .mine-border-logo {
-        width: 6.5rem;
-        height: 6.5rem;
+        width: 0.65rem;
+        height: 0.65rem;
         border-radius: 50%;
         background-color: #fff;
-        margin-left: 1rem;
+        margin-left: 0.1rem;
       }
       .mine-border-btn {
-        font-size: 1.3rem;
-        margin-left: 1rem;
+        font-size: 0.13rem;
+        margin-left: 0.1rem;
       }
     }
     .mine-border-invite {
-      font-size: 1.2rem;
-      line-height: 1.2rem;
+      font-size: 0.12rem;
+      line-height: 0.12rem;
       background-color: #fff;
-      border-radius: 1rem 0 0 1rem;
-      height: 2.5rem;
-      width: 7rem;
+      border-radius: 0.1rem 0 0 0.1rem;
+      height: 0.25rem;
+      width: 0.7rem;
       display: flex;
       justify-content: flex-end;
       align-items: center;
     }
   }
   .mine-border-bottom {
-    padding-top: 2rem;
+    padding-top: 0.2rem;
     display: flex;
     justify-content: space-around;
-    font-size: 1.3rem;
+    font-size: 0.13rem;
     .mine-border-gift,
     .mine-border-collect,
     .mine-border-track {
@@ -189,7 +189,7 @@ export default {
       width: 100%;
       border-right: 0.1px solid gray;
       .mine-border-bottom-num {
-        font-size: 1.5rem;
+        font-size: 0.15rem;
         font-weight: bold;
       }
     }
@@ -202,10 +202,10 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 4rem;
-  margin: 1rem 0;
+  height: 0.4rem;
+  margin: 0.1rem 0;
   background-color: #f8f8f8;
-  border-radius: 0.4rem;
+  border-radius: 0.04rem;
   .mine-point {
     width: 33%;
     .mine-point-icon {
@@ -219,29 +219,29 @@ export default {
     align-items: center;
     justify-content: flex-end;
     .mine-sign-des {
-      font-size: 1.05rem;
+      font-size: 0.105rem;
       color: #b4b4b4;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       align-items: flex-end;
-      margin-right: 0.5rem;
+      margin-right: 0.05rem;
     }
     .mine-sign-btn {
-      width: 10rem;
-      height: 2.8rem;
-      border-radius: 0.5rem;
+      width: 1rem;
+      height: 0.28rem;
+      border-radius: 0.05rem;
       background-color: #00af8d;
       color: #fff;
-      font-size: 1.2rem;
-      line-height: 2.8rem;
+      font-size: 0.12rem;
+      line-height: 0.28rem;
       text-align: center;
       vertical-align: center;
     }
   }
   .mine-point {
     color: #00af8d;
-    font-size: 2rem;
+    font-size: 0.2rem;
     border-right: 0.5px solid #b4b4b4;
     text-align: center;
   }
@@ -249,13 +249,13 @@ export default {
 .mine-order {
   background-color: #fff;
   .mine-order-header {
-    font-size: 1.3rem;
-    height: 2rem;
-    line-height: 2rem;
+    font-size: 0.13rem;
+    height: 0.2rem;
+    line-height: 0.2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.08rem;
     .mine-order-header-two {
       color: #b4b4b4;
     }
@@ -268,17 +268,17 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 5rem;
+    height: 0.5rem;
     color: grey;
-    margin: 0.5rem 0rem;
+    margin: 0.05rem 0rem;
     .mine-order-item {
       display: flex;
       justify-content: center;
       flex-direction: column;
       align-items: center;
-      font-size: 2rem;
+      font-size: 0.2rem;
       .mine-order-item-title {
-        font-size: 1.25rem;
+        font-size: 0.125rem;
       }
     }
   }
@@ -287,14 +287,14 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  font-size: 1.4rem;
+  font-size: 0.14rem;
   color: #5f5f5f;
   .mine-menu-item {
     border-bottom: 1px solid #e9e9e9;
     display: flex;
     justify-content: space-between;
-    height: 3.5rem;
-    line-height: 3.5rem;
+    height: 0.35rem;
+    line-height: 0.35rem;
     &:nth-last-child(1) {
       border-bottom: none;
     }
