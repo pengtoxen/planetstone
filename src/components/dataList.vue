@@ -31,7 +31,9 @@ export default {
         $list: this.list ? this.list : [],
         $pagi: this.pagi ? this.pagi : 1,
         $limit: this.limit ? this.limit : 10,
-        $param: this.param ? this.param : {}
+        $param: this.param ? this.param : {},
+        $useEmit: this.useEmit ? true : false,
+        $closure: this.closure ? this.closure : ""
       }
     };
   },
@@ -48,10 +50,17 @@ export default {
           this.settingData.$finished = true;
         }
       }, 1000);
+      // if (this.closure) {
+      //   this.closure();
+      // }
     },
     doTask(item, param) {
-      this.$router.push({ name: this.target, params: param });
-      this.$emit("func", item);
+      if (this.useemit) {
+        //this.$emit("dotask", item);
+      } else {
+        let data = this.$$.objectMerge(item, param);
+        this.$router.push({ name: this.target, params: data });
+      }
     }
   },
   props: [
@@ -62,7 +71,9 @@ export default {
     "finished",
     "target",
     "param",
-    "finishedtext"
+    "finishedtext",
+    "useemit",
+    "closure"
   ]
 };
 </script>
@@ -90,4 +101,3 @@ export default {
   }
 }
 </style>
-

@@ -3,12 +3,13 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const vuxLoader = require('vux-loader')
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
-module.exports = {
+const webpackConfig = {
   context: path.resolve(__dirname, '../'),
   entry: {
     app: './src/main.js'
@@ -52,15 +53,7 @@ module.exports = {
         loader: 'url-loader',
         exclude: [resolve('src/icons')],
         options: {
-          limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
-        }
-      },
-      {
-        test: /\.(png|jpe?g|gif)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
+          limit: 10240,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
@@ -68,7 +61,7 @@ module.exports = {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
+          limit: 10240,
           name: utils.assetsPath('media/[name].[hash:7].[ext]')
         }
       },
@@ -95,3 +88,5 @@ module.exports = {
     child_process: 'empty'
   }
 }
+
+module.exports = vuxLoader.merge(webpackConfig, { plugins: ['vux-ui'] })

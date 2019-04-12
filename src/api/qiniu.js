@@ -8,6 +8,13 @@ export function getToken() {
   })
 }
 
-export function upload(action, param, config) {
-  return axios.post(action, param, config)
+export function upload(action, uptoken) {
+  const config = {
+      headers: { 'Content-Type': 'multipart/form-data' }
+  }
+  const formData = new FormData()
+  formData.append('file', file)
+  formData.append('token', uptoken)
+  formData.append('key', keyname)
+  return axios.post(action, formData, config)
 }
