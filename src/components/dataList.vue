@@ -56,7 +56,7 @@ export default {
     },
     doTask(item, param) {
       if (this.useemit) {
-        //this.$emit("dotask", item);
+        this.$emit("dotask", item);
       } else {
         let data = this.$$.objectMerge(item, param);
         this.$router.push({ name: this.target, params: data });
