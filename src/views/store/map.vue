@@ -113,7 +113,7 @@ export default {
             3,
             function(ret) {
               var latlng = ret[0];
-              openLocation(res, latlng);
+              this.openLocation(res, latlng);
             }
           );
         },
