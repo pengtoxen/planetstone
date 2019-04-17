@@ -6,7 +6,6 @@
 
 <script>
 import MapLoader from "@/lib/custom/map.js";
-import wx from "weixin-jsapi";
 import { getWxConfig } from "@/api/common";
 export default {
   data() {
@@ -75,31 +74,14 @@ export default {
         console.log("地图加载失败", e);
       }
     );
-    this.initWxConfig();
   },
   methods: {
     makerContet(item) {
       let href = window.location.origin + "/content-detail?hotelId=" + item.id;
-      return `<div style="font-size:15px;">                
+      return `<div style="font-size:15px;width:55vw">                
                 <p style="color: #333333;">${item.content}</p>                
-                <a style="font-size:12px;float:right;color:#01CEAD" href="${href}">到这去</a>
+                <a style="font-size:12px;float:right;color:#01CEAD;padding-right:5px;" href="${href}">到这去</a>
             </div>`;
-    },
-    initWxConfig() {
-      getWxConfig()
-        .then(data => {
-          wx.config({
-            debug: true,
-            appId: data.appId, // 必填，公众号的唯一标识
-            timestamp: data.timestamp, // 必填，生成签名的时间戳，精确到秒
-            nonceStr: data.nonceStr, // 必填，生成签名的随机串
-            signature: data.signature, // 必填，签名
-            jsApiList: ["scanQRCode"]
-          });
-        })
-        .catch(() => {
-          this.$$.msgInf("failed");
-        });
     },
     getLocation() {
       wx.getLocation({

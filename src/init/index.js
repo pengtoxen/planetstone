@@ -32,5 +32,8 @@ Vue.use(ToastPlugin);
 Vue.use(AlertPlugin);
 Vue.use(ConfirmPlugin);
 
+//微信jssdk
+import wxconfig from './wxconfig';
+
 //其他配置
 import config from './config';

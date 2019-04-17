@@ -15,4 +15,3 @@ export function getWxConfig(data) {
     data
   })
 }
-
