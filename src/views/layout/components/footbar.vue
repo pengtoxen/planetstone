@@ -38,7 +38,7 @@ export default {
           id: 1,
           name: "商品",
           icon: "goods",
-          target: "/icons"
+          target: "/goods"
         },
         {
           id: 2,

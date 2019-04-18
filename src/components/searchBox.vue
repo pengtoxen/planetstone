@@ -1,77 +1,112 @@
 <template>
-  <div class="mall-search-box">
-    <div class="mall-search-inner">
-      <div class="mui-input-row mall-search">
-        <form id="search-input" class="search-form" action="#" v-on:submit.prevent>
-          <input
-            type="search"
-            v-model="settingData.$searchValue"
-            class="mui-input-clear"
-            :placeholder="settingData.$placeholder"
-          >
-        </form>
-      </div>
-      <div class="mall-search-icon" @click="onSearch">
-        <svg-icon icon-class="search_list"/>
-      </div>
-    </div>
+  <div class="search-container">
+    <search
+      :placeholder="settingData.$placeholder"
+      :cancel-text="settingData.$cancelText"
+      v-model="settingData.$searchValue"
+      :results="settingData.$results"
+      :auto-fixed="settingData.$autoFixed"
+      :top="settingData.$fixedTop"
+      :position="settingData.$position"
+      :auto-scroll-to-top="settingData.$autoScrollToTop"
+      @on-submit="onSubmit"
+      @on-cancel="onCancel"
+      @on-change="onChange"
+      @on-result-click="resultClick"
+      @on-focus="onFocus"
+      @on-blur="onBlur"
+      @on-clear="onClear"
+      ref="search"
+    ></search>
   </div>
 </template>
 
 <script>
+import { Search } from "vux";
 export default {
   data() {
     return {
       settingData: {
-        $placeholder: this.placeholder
-          ? this.placeholder
-          : "有问题，点我搜搜看",
-        $searchValue: this.searchValue ? this.searchValue : ""
+        $placeholder: this.placeholder,
+        $cancelText: this.cancelText,
+        $searchValue: this.searchValue,
+        $searchResults: this.searchResults,
+        $autoFixed: this.autoFixed,
+        $fixedTop: this.fixedTop,
+        $position: this.position,
+        $autoScrollToTop: this.autoScrollToTop
       }
     };
   },
-  created() {},
+  components: {
+    Search
+  },
   methods: {
-    onSearch: function() {
-      this.$emit("func",this.settingData.$searchValue);
+    onSubmit() {
+      this.$emit("onSubmit", this.searchValue);
+    },
+    onCancel() {
+      this.$emit("onCancel", this.searchValue);
+    },
+    onChange() {
+      this.$emit("onChange", this.searchValue);
+    },
+    resultClick(item) {
+      this.$emit("resultClick", item);
+    },
+    onFocus() {
+      this.$emit("onFocus");
+    },
+    onBlur() {
+      this.$emit("onBlur");
+    },
+    onClear() {
+      this.$emit("onClear");
     }
   },
-  watch: {},
-  props: ["placeholder","searchValue"]
+  props: {
+    placeholder: {
+      type: String,
+      default: "有问题，点我搜搜看"
+    },
+    cancelText: {
+      type: String,
+      default: "取消"
+    },
+    searchValue: {
+      type: String,
+      default: ""
+    },
+    searchResults: {
+      type: Array,
+      default: function() {
+        return [];
+      }
+    },
+    autoFixed: {
+      type: Boolean,
+      default: true
+    },
+    fixedTop: {
+      type: String,
+      default: "0px"
+    },
+    position: {
+      type: String,
+      default: "relative"
+    },
+    autoScrollToTop: {
+      type: Boolean,
+      default: true
+    }
+  },
+  created: function() {
+    console.log(this.$props);
+  }
 };
 </script>
 <style lang="scss" scoped>
-@import "@/styles/mixin.scss";
-.mall-search-box {
-  height: 0.34rem;
-  margin: 0.05rem 0.1rem;
-  .mall-search-inner {
-    border-radius: 0.3rem;
-    @include flexLayout(nowrap);
-    .mall-search {
-      width: 100%;
-      .search-form {
-        width: 100%;
-        input[type="search"] {
-          background-color: white;
-          margin-bottom: 0;
-          border-radius: 0.3rem 0 0 0.3rem;
-          padding-left: 0.12rem;
-          text-align: left;
-          font-size: 0.14rem;
-          color: black;
-        }
-      }
-    }
-    .mall-search-icon {
-      height: 0.34rem;
-      background-color: #fff;
-      border-radius: 0 0.3rem 0.3rem 0;
-      @include flexLayout(nowrap);
-      padding-right: 0.1rem;
-      font-size: 0.25rem;
-      color: #1989d1;
-    }
-  }
+.search-container {
+  font-size: 0.14rem;
 }
 </style>

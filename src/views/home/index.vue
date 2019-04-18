@@ -51,7 +51,7 @@
         <template v-slot:one="{oneData}">
           <div class="goods-info">
             <div class="goods-name">{{ oneData.title }}</div>
-            <div class="goods-price">￥{{ oneData.sell_price }}</div>
+            <div class="goods-price">￥{{ oneData.sell_price | toFixedByNum}}</div>
             <div class="goods-tags">
               <div class="goods-tag" v-for="(item, index) in oneData.tags" :key="index">{{ item}}</div>
             </div>
@@ -198,7 +198,7 @@ export default {
 .services-list {
   @include flexLayout(nowrap);
   @include greenColor;
-  font-size: 0.01rem;
+  font-size: 0.14rem;
   height: 0.3rem;
 }
 .division-zone {
@@ -284,7 +284,7 @@ export default {
   padding-bottom: 0.03rem;
   .goods-name {
     color: #999;
-    font-size: 0.1rem;
+    font-size: 0.15rem;
     padding-top: 0.05rem;
   }
   .goods-price {
@@ -292,9 +292,9 @@ export default {
     font-weight: 600;
   }
   .goods-tags {
-    font-size: 0.08rem;
-    height: 0.13rem;
-    line-height: 0.13rem;
+    font-size: 0.14rem;
+    height: 0.15rem;
+    line-height: 0.15rem;
     @include flexLayout(nowrap, row, flex-start, center);
     .goods-tag {
       border: 1px solid #999;

@@ -8,7 +8,6 @@ Vue.use(Router)
 import Layout from '../views/layout/layout.vue'
 
 export const constantRouterMap = [
-  // { path: '/test', component: _import('test/test'), hidden: true },
   // { path: '/404', component: _import('errorPage/404'), hidden: true },
   // { path: '/401', component: _import('errorPage/401'), hidden: true },
   {
@@ -35,12 +34,12 @@ export const constantRouterMap = [
         }
       },
       {
-        path: '/icons',
-        component: _import('icons/index'),
-        name: 'icons',
+        path: '/goods',
+        component: _import('goods/index'),
+        name: 'goods',
         meta: {
-          title: 'icons',
-          icon: 'icons',
+          title: 'goods',
+          icon: '',
           noCache: true,
           footTab: "footTabOne",
         }
