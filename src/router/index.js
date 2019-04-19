@@ -7,7 +7,8 @@ Vue.use(Router)
 /* Layout */
 import Layout from '../views/layout/layout.vue'
 
-export const constantRouterMap = [
+export const constantRouterMap = [ 
+  { path: '/test', component: _import('test/test'), hidden: true },
   // { path: '/404', component: _import('errorPage/404'), hidden: true },
   // { path: '/401', component: _import('errorPage/401'), hidden: true },
   {
@@ -102,6 +103,17 @@ export const constantRouterMap = [
         meta: {
           title: 'cate',
           icon: 'cate',
+          noCache: true,
+          footTab: "footTabOne"
+        }
+      },
+      {
+        path: '/case',
+        component: _import('case/index'),
+        name: 'case',
+        meta: {
+          title: 'case',
+          icon: '',
           noCache: true,
           footTab: "footTabOne"
         }
