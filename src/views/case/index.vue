@@ -35,13 +35,13 @@
         </div>
       </div>
       <div slot="content" class="content-section">
+        <div class="more-icon">
+          <svg-icon icon-class="attention"/>
+        </div>
         <div class="tabs-container">
-          <div class="more-icon">
-            <svg-icon icon-class="attention"/>
-          </div>
           <div class="tabs">
-            <div class="3d-tabs">3D图</div>
-            <div class="2d-tabs">2D图</div>
+            <div>3D图</div>
+            <div>2D图</div>
           </div>
         </div>
         <cabinetlist :list="cabinetList">
@@ -371,6 +371,33 @@ export default {
         line-height: 0.27rem;
         margin: 0.05rem;
         border-radius: 2px;
+      }
+    }
+  }
+}
+.content-section {
+  .more-icon {
+    svg {
+      height: 0.2rem;
+      width: 0.2rem;
+    }
+  }
+  .tabs-container {
+    @include flexLayout(wrap, row);
+    .tabs {
+      @include flexLayout(wrap, row);
+      div {
+        flex: 1;
+        width: 1.2rem;
+        height: 100%;
+        border: 1px solid #1ab192;
+        @include flexLayout(wrap);
+        &:first-child {
+          border-radius: 30px 0 0 30px;
+        }
+        &:last-child {
+          border-radius: 0 30px 30px 0;
+        }
       }
     }
   }
