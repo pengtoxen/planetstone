@@ -18,6 +18,10 @@ import '@/icons/index'
 //自定义全局样式
 import '@/styles/index.scss';
 
+//引入mock模块
+import Mock from '@/mock/index';
+Mock.start();
+
 //vant组件
 import { Tabbar, TabbarItem, List, Lazyload } from 'vant';
 import 'vant/lib/index.css';
