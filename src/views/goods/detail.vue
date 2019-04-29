@@ -1,6 +1,6 @@
 <template>
   <div>
-    <swiper :photoList="sliderList"></swiper>
+    <swiper :photoList="sliderList" :height="'auto'"></swiper>
   </div>
 </template>
 
@@ -12,11 +12,11 @@ export default {
       sliderList: [
         {
           img:
-            "http://pic.linshimuye.com/image/-1/2018-11-12-048762ee39b7-45ea-9548-1c843e9c01fe.jpg"
+            "http://pic.linshimuye.com/image/-1/2018-7-4-fba41500fc08-492b-87e9-4c88f482b3cd.jpg@750h_750w_1e_1c_0l_1wh"
         },
         {
           img:
-            "http://pic.linshimuye.com/image/-1/2018-11-12-048762ee39b7-45ea-9548-1c843e9c01fe.jpg"
+            "http://pic.linshimuye.com/image/-1/2018-7-4-8af1abc83220-408e-8234-745b89ed0e75.jpg@750h_750w_1e_1c_0l_1wh"
         }
       ]
     };
