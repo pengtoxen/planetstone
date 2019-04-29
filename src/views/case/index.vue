@@ -3,7 +3,7 @@
     <vueDrawerLayout
       ref="drawer"
       :drawer-width="250"
-      :enable="true"
+      :enable="false"
       :animatable="true"
       :z-index="0"
       :drawable-distance="Math.floor(250/3)"
@@ -18,7 +18,7 @@
       <div class="drawer-content" slot="drawer">
         <div class="out-box">
           <div class="header-section">
-            <svg-icon icon-class="attention"/>
+            <svg-icon icon-class="filter"/>
             <div class="header-content">图库筛选</div>
           </div>
           <hr class="drawer-hr">
@@ -28,20 +28,26 @@
           <div class="class-section">
             <div class="class-header">{{item.className}}</div>
             <div class="class-content">
-              <div class="class-item" v-for="(v,k) in item.dataList" :key="k">{{v.name}}</div>
+              <div
+                :class="['class-item',pickClassId == v.id ? 'pick-item':'']"
+                v-for="(v,k) in item.dataList"
+                :key="k"
+                @click="pickClass(v.id)"
+              >{{v.name}}</div>
             </div>
           </div>
           <hr class="drawer-hr">
         </div>
       </div>
       <div slot="content" class="content-section">
-        <div class="more-icon">
-          <svg-icon icon-class="attention"/>
+        <div class="more-icon" @click.capture="handleToggleDrawer">
+          <svg-icon v-if="arrowFlag" icon-class="right"/>
+          <svg-icon v-else icon-class="back"/>
         </div>
         <div class="tabs-container">
           <div class="tabs">
-            <div>3D图</div>
-            <div>2D图</div>
+            <div @click="pickTab(1)" :class="[pickTabId === 1 ? 'pick-tab' : '']">3D图</div>
+            <div @click="pickTab(2)" :class="[pickTabId === 2 ? 'pick-tab' : '']">2D图</div>
           </div>
         </div>
         <cabinetlist :list="cabinetList">
@@ -72,7 +78,9 @@ import { DrawerLayout } from "vue-drawer-layout";
 export default {
   data() {
     return {
-      pageindex: 1, // 分页的页数
+      arrowFlag: true,
+      pickClassId: 0,
+      pickTabId: 2,
       cabinetList: [
         {
           id: 1,
@@ -229,7 +237,20 @@ export default {
     handleSlideStart() {},
     handleSlideMove() {},
     handleSlideEnd() {},
-    handleMaskClick() {}
+    handleMaskClick() {
+      this.arrowFlag = true;
+      this.$refs.drawer.toggle(false);
+    },
+    handleToggleDrawer() {
+      this.arrowFlag = false;
+      this.$refs.drawer.toggle(true);
+    },
+    pickClass(id) {
+      this.pickClassId = id;
+    },
+    pickTab(id) {
+      this.pickTabId = id;
+    }
   },
   components: {
     cabinetlist: datalist,
@@ -240,7 +261,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/mixin.scss";
 .container {
-  padding-bottom: 0.45rem !important;
+  height: calc(100vh - 0.45rem);
   /deep/ .drawer-layout {
     .drawer-mask {
       box-shadow: 0 5px lightgrey;
@@ -346,8 +367,16 @@ export default {
   }
   .header-section {
     height: 0.45rem;
-    padding-left: 0.15rem;
+    padding-left: 0.1rem;
     @include flexLayout(nowrap, row, flex-start);
+    svg {
+      height: 0.2rem;
+      width: 0.2rem;
+      color: #1ab192;
+    }
+    .header-content {
+      padding-left: 0.05rem;
+    }
   }
   .class-section {
     @include flexLayout(wrap, column);
@@ -376,15 +405,21 @@ export default {
   }
 }
 .content-section {
+  position: relative;
   .more-icon {
     svg {
+      position: absolute;
+      top: 0.12rem;
+      left: 0.1rem;
       height: 0.2rem;
       width: 0.2rem;
+      color: #1ab192;
     }
   }
   .tabs-container {
     @include flexLayout(wrap, row);
     .tabs {
+      color: #333;
       @include flexLayout(wrap, row);
       div {
         flex: 1;
@@ -401,5 +436,12 @@ export default {
       }
     }
   }
+}
+.pick-item {
+  border: 1px solid #1ab192 !important;
+}
+.pick-tab {
+  background-color: #1ab192;
+  color: #fff;
 }
 </style>
