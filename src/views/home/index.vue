@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <swiper :photoList="sliderList" :isFull="isFull"></swiper>
+    <searchbox class="search-box"></searchbox>
+    <swiper :photoList="sliderList" :aspectRatio="0.46"></swiper>
     <div class="services-list">
       <div class="services-item" v-for="(item, index) in servicesList" :key="index">
         <svg-icon icon-class="round_check"/>
@@ -47,7 +48,7 @@
       <span class="sub-title">{{moduleThree.sub_title}}</span>
     </div>
     <div class="module-three">
-      <goodslist :list="moduleThree.list">
+      <goodslist :list="moduleThree.list" :useemit="true" @func="gotoDetail">
         <template v-slot:one="{oneData}">
           <div class="goods-info">
             <div class="goods-name">{{ oneData.title }}</div>
@@ -65,6 +66,7 @@
 <script>
 import swiper from "@/components/swiper.vue";
 import datalist from "@/components/dataList.vue";
+import searchbox from "@/components/searchBox.vue";
 export default {
   data() {
     return {
@@ -181,11 +183,21 @@ export default {
   methods: {
     linkeToUrl(url) {
       this.$router.push(url);
+    },
+    gotoDetail(data) {
+      console.log(1);
+      this.$router.push({
+        path: "goods/detail",
+        query: {
+          id: data.id
+        }
+      });
     }
   },
   components: {
     swiper,
-    goodslist: datalist
+    goodslist: datalist,
+    searchbox
   }
 };
 </script>
@@ -194,6 +206,7 @@ export default {
 @import "@/styles/mixin.scss";
 .container {
   padding-bottom: 0.5rem !important;
+  padding-top: 0.44rem !important;
 }
 .services-list {
   @include flexLayout(nowrap);
@@ -302,5 +315,12 @@ export default {
       margin: 0 0.02rem;
     }
   }
+}
+.search-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }
 </style>

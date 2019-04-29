@@ -7,6 +7,7 @@
       :auto="auto"
       :loop="loop"
       :height="height"
+      :aspect-ratio="aspectRatio"
     >
       <!-- <swiper-item v-for="(item, index) in photoList" :key="index">
         <img :src="item.img" tag="img"/>
@@ -47,6 +48,10 @@ export default {
     height: {
       type: String,
       default: "200px"
+    },
+    aspectRatio: {
+      type: Number,
+      default: 1
     }
   },
   components: {
