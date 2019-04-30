@@ -43,31 +43,28 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+@import "@/styles/mixin.scss";
 .icons-container {
-  margin: 10px 20px 0;
-  overflow: hidden;
+  background-color: #fff;
+  height: calc(100vh - 0.44rem);
   .icons-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    &:after {
-      content: "";
-      flex: auto;
-    }
+    @include flexLayout(wrap, row, space-between);
+    width: 100%;
     .icon-item {
-      margin: 20px;
-      height: 110px;
+      @include flexLayout(wrap, column);
       text-align: center;
-      width: 110px;
-      font-size: 30px;
       color: #24292e;
       cursor: pointer;
+      // overflow: hidden;
+      width: 25%;
+      height: 100%;
+      padding: 10px 0;
+      border: 1px solid #eee;
     }
     span {
       display: block;
-      font-size: 24px;
-      margin-top: 10px;
+      font-size: 13px;
+      margin-top: 5px;
     }
   }
 }
