@@ -7,7 +7,7 @@
         <div class="goods-real-price">¥ 2072.00</div>
         <div class="goods-sell-price">
           价格
-          <span>¥3596.00</span>
+          <span>¥ 3596.00</span>
         </div>
       </div>
       <div class="services-list">
