@@ -10,5 +10,10 @@
 
 .vux-slider > .vux-indicator,
 .vux-slider .vux-indicator-right {
-  bottom: -15% !important;
+  bottom: -8% !important;
+}
+
+.vux-slider > .vux-indicator > a > .vux-icon-dot.active,
+.vux-slider .vux-indicator-right > a > .vux-icon-dot.active {
+  background-color: #1ab192 !important;
 }

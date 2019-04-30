@@ -139,7 +139,7 @@ export default {
 .mine-border {
   height: 1.5rem;
   border-radius: 0.04rem;
-  background-color: #01cead;
+  background-color: #1ab192;
   box-shadow: 0.06rem 0.06rem 0.06rem #ddd;
   .mine-border-top {
     display: flex;
@@ -231,7 +231,7 @@ export default {
       width: 1rem;
       height: 0.28rem;
       border-radius: 0.05rem;
-      background-color: #00af8d;
+      background-color: #1ab192;
       color: #fff;
       font-size: 0.12rem;
       line-height: 0.28rem;
@@ -240,7 +240,7 @@ export default {
     }
   }
   .mine-point {
-    color: #00af8d;
+    color: #1ab192;
     font-size: 0.2rem;
     border-right: 0.5px solid #b4b4b4;
     text-align: center;

@@ -70,7 +70,6 @@ import searchbox from "@/components/searchBox.vue";
 export default {
   data() {
     return {
-      isFull: true,
       sliderList: [
         {
           img:
@@ -185,7 +184,6 @@ export default {
       this.$router.push(url);
     },
     gotoDetail(data) {
-      console.log(1);
       this.$router.push({
         path: "goods/detail",
         query: {
