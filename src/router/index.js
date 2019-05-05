@@ -29,7 +29,7 @@ export const constantRouterMap = [
                 meta: {
                     title: 'home',
                     icon: 'home',
-                    noCache: true,
+                    cache: true,
                     footTab: "footTabOne",
                     headTab: ""
                 }
@@ -41,7 +41,7 @@ export const constantRouterMap = [
                 meta: {
                     title: 'goods',
                     icon: '',
-                    noCache: true,
+                    cache: true,
                     footTab: "footTabOne",
                 }
             },
@@ -52,7 +52,7 @@ export const constantRouterMap = [
                 meta: {
                     title: 'detail',
                     icon: '',
-                    noCache: true,
+                    cache: true,
                     footTab: "",
                 }
             },
@@ -63,7 +63,7 @@ export const constantRouterMap = [
                 meta: {
                     title: 'cart',
                     icon: 'cart',
-                    noCache: true,
+                    cache: true,
                     footTab: "footTabOne",
                 }
             },
@@ -73,7 +73,7 @@ export const constantRouterMap = [
                 meta: {
                     title: 'center',
                     icon: 'center',
-                    noCache: true,
+                    cache: true,
                     footTab: "footTabOne",
                 }
             },
@@ -84,7 +84,7 @@ export const constantRouterMap = [
                 meta: {
                     title: 'qbcode',
                     icon: '',
-                    noCache: true,
+                    cache: true,
                 }
             },
             {
@@ -94,7 +94,7 @@ export const constantRouterMap = [
                 meta: {
                     title: 'userinfo',
                     icon: '',
-                    noCache: true,
+                    cache: true,
                 }
             },
             {
@@ -104,7 +104,7 @@ export const constantRouterMap = [
                 meta: {
                     title: 'sign',
                     icon: '',
-                    noCache: true,
+                    cache: true,
                 }
             },
             {
@@ -114,7 +114,7 @@ export const constantRouterMap = [
                 meta: {
                     title: 'cate',
                     icon: 'cate',
-                    noCache: true,
+                    cache: true,
                     footTab: "footTabOne"
                 }
             },
@@ -125,7 +125,7 @@ export const constantRouterMap = [
                 meta: {
                     title: 'case',
                     icon: '',
-                    noCache: true,
+                    cache: true,
                     footTab: "footTabOne"
                 }
             },
@@ -136,7 +136,7 @@ export const constantRouterMap = [
                 meta: {
                     title: 'store',
                     icon: 'store',
-                    noCache: true,
+                    cache: true,
                     footTabCss: 'app-main-no-padding'
                 },
             },
@@ -147,7 +147,7 @@ export const constantRouterMap = [
                 meta: {
                     title: 'map',
                     icon: '',
-                    noCache: true,
+                    cache: true,
                     footTabCss: 'app-main-no-padding'
                 }
             },
@@ -158,7 +158,7 @@ export const constantRouterMap = [
                 meta: {
                     title: 'search',
                     icon: '',
-                    noCache: true,
+                    cache: true,
                 }
             },
             {
@@ -168,7 +168,7 @@ export const constantRouterMap = [
                 meta: {
                     title: 'coupon',
                     icon: '',
-                    noCache: true,
+                    cache: true,
                 }
             }
         ]
