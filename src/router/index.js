@@ -36,7 +36,7 @@ export const constantRouterMap = [
             },
             {
                 path: '/goods',
-                component: _import('goods/index'),
+                component: _import('goods/lists'),
                 name: 'goods',
                 meta: {
                     title: 'goods',

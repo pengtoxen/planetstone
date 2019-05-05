@@ -94,15 +94,14 @@ export default {
 .data-list {
     display: flex;
     flex-wrap: wrap;
-    padding: 0.07rem;
+    padding: 0.07rem 0;
     justify-content: space-between;
-
     .data-item {
         width: 49%;
-        border: 0.01rem solid #ccc;
+        //border: 0.01rem solid #ccc;
         box-shadow: 0 0 0.08rem #ccc;
         margin: 0.04rem 0;
-        padding: 0.02rem;
+        // padding: 0.02rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

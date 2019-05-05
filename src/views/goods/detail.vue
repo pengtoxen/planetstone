@@ -66,19 +66,19 @@
       </div>
     </div>
     <div class="foot-tab">
-      <div class="tab-section">
+      <div class="tab-section" @click="gotoHome()">
         <div class="section-item">
           <svg-icon icon-class="home"/>
           <span class="name">首页</span>
         </div>
       </div>
-      <div class="tab-section">
+      <div class="tab-section" @click="gotoLists()">
         <div class="section-item">
           <svg-icon icon-class="goods"/>
           <span class="name">商品</span>
         </div>
       </div>
-      <div class="tab-section">
+      <div class="tab-section" @click="gotoCollect()">
         <div class="section-item">
           <svg-icon icon-class="favor"/>
           <span class="name">收藏</span>
@@ -126,7 +126,16 @@ export default {
   mounted() {},
   methods: {
     gotoService() {},
-    pickAttr() {}
+    pickAttr() {},
+    gotoHome() {
+      this.$router.push("/home");
+    },
+    gotoLists() {
+      this.$router.push("/goods");
+    },
+    gotoCollect() {
+      this.$router.push("/home");
+    }
   },
   watch: {},
   components: {
