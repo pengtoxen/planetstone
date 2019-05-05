@@ -11,8 +11,14 @@
       <div class="tabs-right" @click="getDataByTab('new')">
         <span :class="{'tab-active' : curTab == 'new'}">新品</span>
       </div>
-      <div class="tabs-right" @click="getDataByTab('price')">
-        <span :class="{'tab-active' : curTab == 'price'}">价格</span>
+      <div class="tabs-right price-arrow-section" @click="getDataByTab('price')">
+        <div :class="{'tab-active' : curTab == 'price'}">
+          <span>价格</span>
+          <div class="price-arrow">
+            <div :class="['up-arrow', curArrow && curTab == 'price' ?'up-arrow-active':'']"></div>
+            <div :class="['down-arrow',!curArrow && curTab == 'price' ?'down-arrow-active':'']"></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="goods-main-section">
@@ -39,6 +45,7 @@ export default {
   data() {
     return {
       curTab: "composite",
+      curArrow: true,
       searchText: this.$route.query.search,
       moduleThree: {
         list: [
@@ -74,6 +81,9 @@ export default {
     },
     getDataByTab: function(tab) {
       this.curTab = tab;
+      if (tab === "price") {
+        this.curArrow = !this.curArrow;
+      }
     }
   },
   watch: {},
@@ -100,25 +110,30 @@ export default {
 }
 .goods-tabs-section {
   font-size: 0.14rem;
+  width: 100%;
   @include flexLayout(nowrap);
-  div {
+  & > div {
     flex: 1 1 auto;
+    width: 25%;
     text-align: center;
     line-height: 0.4rem;
     @include flexLayout(nowrap);
     height: 0.4rem;
     span {
-      width: 90%;
+      width: 80%;
       height: 100%;
+      border-bottom: 0.02rem transparent solid;
+    }
+    & > div {
+      width: 80%;
+      height: 100%;
+      border-bottom: 0.02rem transparent solid;
     }
   }
 }
 .tab-active {
-  border-bottom: 0.02rem #1ab192 solid;
-}
-.goods-class-active {
-  color: #1ab192;
-  border-left-color: #1ab192 !important;
+  border-bottom: 0.02rem #1ab192 solid !important;
+  color: #1ab192 !important;
 }
 .goods-main-section {
   font-size: 0.14rem;
@@ -145,5 +160,40 @@ export default {
       }
     }
   }
+}
+.price-arrow-section {
+  & > div {
+    @include flexLayout(nowrap, row, center);
+    & > span {
+      width: auto;
+    }
+    .price-arrow {
+      margin-left: 0.05rem;
+      @include flexLayout(nowrap, column, center);
+      .up-arrow {
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid #5f5f5f;
+        margin-bottom: 0.03rem;
+      }
+      .down-arrow {
+        width: 0;
+        height: 0;
+        border-top: 5px solid #5f5f5f;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+      }
+    }
+  }
+}
+.up-arrow-active {
+  border-bottom: 5px solid #1ab192 !important;
+}
+.down-arrow-active {
+  border-top: 5px solid #1ab192 !important;
 }
 </style>
