@@ -97,12 +97,12 @@ export default {
       entrance: [
         {
           title: "新上橱柜",
-          target: "/case",
+          target: "/goods",
           icon: "new"
         },
         {
           title: "热销橱柜",
-          target: "/case",
+          target: "/goods",
           icon: "hot"
         },
         {

@@ -48,16 +48,16 @@ export default {
         },
         {
           id: 3,
-          name: "购物车",
-          icon: "cart",
-          target: "/center"
-        },
-        {
-          id: 4,
-          name: "我的",
-          icon: "profile",
-          target: "/center"
+          name: "到店体验",
+          icon: "location",
+          target: "/store"
         }
+        // {
+        //   id: 4,
+        //   name: "我的",
+        //   icon: "profile",
+        //   target: "/center"
+        // }
       ]
     };
   },
