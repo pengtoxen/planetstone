@@ -55,7 +55,7 @@ export default {
             sell_price: 5190,
             tags: ["高端大气", "上档次"],
             img_url:
-              "http://pic.linshimuye.com/image/-1/2018-8-20-1ef8597cbb6b-4fca-b7f6-48d86434341b.jpg"
+              "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557206239582&di=1744a9ca5949f69662ca8b70b3007550&imgtype=0&src=http%3A%2F%2Fimg1n.soufunimg.com%2Fviewimage%2Fjiancai%2Fbusiness%2Fto8to%2F201508%2F21%2F88%2F66514629709c4a2cf74817fde6d9f663%2F432x324c.jpg"
           },
           {
             id: 2,
@@ -63,7 +63,7 @@ export default {
             sell_price: 5190,
             tags: ["高端大气", "上档次"],
             img_url:
-              "http://pic.linshimuye.com/image/-1/2018-8-20-1ef8597cbb6b-4fca-b7f6-48d86434341b.jpg"
+              "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557206239582&di=1744a9ca5949f69662ca8b70b3007550&imgtype=0&src=http%3A%2F%2Fimg1n.soufunimg.com%2Fviewimage%2Fjiancai%2Fbusiness%2Fto8to%2F201508%2F21%2F88%2F66514629709c4a2cf74817fde6d9f663%2F432x324c.jpg"
           }
         ],
         finished: true,

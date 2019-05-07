@@ -3,7 +3,7 @@
     <swiper :photoList="sliderList" :height="'auto'"></swiper>
     <div class="content">
       <div class="goods-title-section">
-        <div class="goods-title">DT系列 北欧风</div>
+        <div class="goods-title">星球石业高端橱柜</div>
         <div class="goods-real-price">¥ 2072.00</div>
         <div class="goods-sell-price">
           价格
@@ -39,27 +39,19 @@
         </div>
         <div class="goods-detail">
           <img
-            src="http://pic.linshimuye.com/image/-1/2018-7-5-cbd9106be9e5-4241-8325-2419d124ddc6.jpg"
+            src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557206239582&di=1744a9ca5949f69662ca8b70b3007550&imgtype=0&src=http%3A%2F%2Fimg1n.soufunimg.com%2Fviewimage%2Fjiancai%2Fbusiness%2Fto8to%2F201508%2F21%2F88%2F66514629709c4a2cf74817fde6d9f663%2F432x324c.jpg"
             alt
           >
           <img
-            src="http://pic.linshimuye.com/image/-1/2018-7-5-cbd9106be9e5-4241-8325-2419d124ddc6.jpg"
+            src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557206239582&di=1744a9ca5949f69662ca8b70b3007550&imgtype=0&src=http%3A%2F%2Fimg1n.soufunimg.com%2Fviewimage%2Fjiancai%2Fbusiness%2Fto8to%2F201508%2F21%2F88%2F66514629709c4a2cf74817fde6d9f663%2F432x324c.jpg"
             alt
           >
           <img
-            src="http://pic.linshimuye.com/image/-1/2018-7-5-cbd9106be9e5-4241-8325-2419d124ddc6.jpg"
+            src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557206239582&di=1744a9ca5949f69662ca8b70b3007550&imgtype=0&src=http%3A%2F%2Fimg1n.soufunimg.com%2Fviewimage%2Fjiancai%2Fbusiness%2Fto8to%2F201508%2F21%2F88%2F66514629709c4a2cf74817fde6d9f663%2F432x324c.jpg"
             alt
           >
           <img
-            src="http://pic.linshimuye.com/image/-1/2018-7-5-cbd9106be9e5-4241-8325-2419d124ddc6.jpg"
-            alt
-          >
-          <img
-            src="http://pic.linshimuye.com/image/-1/2018-7-5-cbd9106be9e5-4241-8325-2419d124ddc6.jpg"
-            alt
-          >
-          <img
-            src="http://pic.linshimuye.com/image/-1/2018-7-5-cbd9106be9e5-4241-8325-2419d124ddc6.jpg"
+            src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557206239582&di=1744a9ca5949f69662ca8b70b3007550&imgtype=0&src=http%3A%2F%2Fimg1n.soufunimg.com%2Fviewimage%2Fjiancai%2Fbusiness%2Fto8to%2F201508%2F21%2F88%2F66514629709c4a2cf74817fde6d9f663%2F432x324c.jpg"
             alt
           >
         </div>
@@ -84,7 +76,7 @@
           <span class="name">收藏</span>
         </div>
       </div>
-      <div class="tab-section">
+      <div class="tab-section" @click="phoneCall('13058898058')">
         <div class="contact">立即联系</div>
       </div>
     </div>
@@ -99,11 +91,11 @@ export default {
       sliderList: [
         {
           img:
-            "http://pic.linshimuye.com/image/-1/2018-7-4-fba41500fc08-492b-87e9-4c88f482b3cd.jpg@750h_750w_1e_1c_0l_1wh"
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557206239582&di=1744a9ca5949f69662ca8b70b3007550&imgtype=0&src=http%3A%2F%2Fimg1n.soufunimg.com%2Fviewimage%2Fjiancai%2Fbusiness%2Fto8to%2F201508%2F21%2F88%2F66514629709c4a2cf74817fde6d9f663%2F432x324c.jpg"
         },
         {
           img:
-            "http://pic.linshimuye.com/image/-1/2018-7-4-8af1abc83220-408e-8234-745b89ed0e75.jpg@750h_750w_1e_1c_0l_1wh"
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557206239582&di=1744a9ca5949f69662ca8b70b3007550&imgtype=0&src=http%3A%2F%2Fimg1n.soufunimg.com%2Fviewimage%2Fjiancai%2Fbusiness%2Fto8to%2F201508%2F21%2F88%2F66514629709c4a2cf74817fde6d9f663%2F432x324c.jpg"
         }
       ],
       servicesList: [
@@ -135,6 +127,9 @@ export default {
     },
     gotoCollect() {
       this.$router.push("/home");
+    },
+    phoneCall(phone) {
+      window.location.href = "tel://" + phone;
     }
   },
   watch: {},
