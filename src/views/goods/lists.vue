@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="goods-main-section">
-      <goodslist :list="moduleThree.list">
+      <goodslist :list="moduleThree.list" :useemit="true" @func="gotoDetail">
         <template v-slot:one="{oneData}">
           <div class="goods-info">
             <div class="goods-name">{{ oneData.title }}</div>
@@ -84,6 +84,14 @@ export default {
       if (tab === "price") {
         this.curArrow = !this.curArrow;
       }
+    },
+    gotoDetail(data) {
+      this.$router.push({
+        path: "goods/detail",
+        query: {
+          id: data.id
+        }
+      });
     }
   },
   watch: {},

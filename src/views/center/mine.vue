@@ -21,11 +21,11 @@
         </div>
         <div class="mine-border-collect">
           <span class="mine-border-bottom-num">0</span>
-          <span class="mine-border-bottom-title">我的礼包</span>
+          <span class="mine-border-bottom-title">我的收藏</span>
         </div>
         <div class="mine-border-track">
           <span class="mine-border-bottom-num">0</span>
-          <span class="mine-border-bottom-title">我的礼包</span>
+          <span class="mine-border-bottom-title">我的足迹</span>
         </div>
       </div>
     </div>
@@ -74,7 +74,7 @@
         </div>
         <div class="mine-order-item">
           <svg-icon icon-class="refund"/>
-          <span class="mine-order-item-title">退款</span>
+          <span class="mine-order-item-title">售后服务</span>
         </div>
       </div>
       <div class="mine-order-line"></div>
@@ -127,7 +127,7 @@ export default {
 
 <style lang="scss" scoped>
 .mine-container {
-  padding: 0 0.07rem;
+  padding: 0 0.12rem;
   padding-bottom: 0 !important;
   background-color: #fff !important;
   background-color: #eeeeee;
@@ -220,7 +220,7 @@ export default {
     justify-content: flex-end;
     .mine-sign-des {
       font-size: 0.105rem;
-      color: #b4b4b4;
+      color: #333;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
@@ -257,7 +257,7 @@ export default {
     justify-content: space-between;
     margin-bottom: 0.08rem;
     .mine-order-header-two {
-      color: #b4b4b4;
+      color: #333;
     }
   }
   .mine-order-line {
@@ -269,8 +269,8 @@ export default {
     justify-content: space-between;
     align-items: center;
     height: 0.5rem;
-    color: grey;
-    margin: 0.05rem 0rem;
+    color: #333;
+    margin: 0.05rem 0.05rem;
     .mine-order-item {
       display: flex;
       justify-content: center;
@@ -288,13 +288,13 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   font-size: 0.14rem;
-  color: #5f5f5f;
+  color: #333;
   .mine-menu-item {
     border-bottom: 1px solid #e9e9e9;
     display: flex;
     justify-content: space-between;
-    height: 0.35rem;
-    line-height: 0.35rem;
+    height: 0.45rem;
+    line-height: 0.45rem;
     &:nth-last-child(1) {
       border-bottom: none;
     }

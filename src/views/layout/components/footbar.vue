@@ -51,13 +51,13 @@ export default {
           name: "到店体验",
           icon: "location",
           target: "/store"
+        },
+        {
+          id: 4,
+          name: "我的",
+          icon: "profile",
+          target: "/center"
         }
-        // {
-        //   id: 4,
-        //   name: "我的",
-        //   icon: "profile",
-        //   target: "/center"
-        // }
       ]
     };
   },
