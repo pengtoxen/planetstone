@@ -57,17 +57,6 @@ export const constantRouterMap = [
                 }
             },
             {
-                path: '/cart',//购物车
-                component: _import('cart/cartList'),
-                name: 'cart',
-                meta: {
-                    title: 'cart',
-                    icon: 'cart',
-                    cache: true,
-                    footTab: "footTabOne",
-                }
-            },
-            {
                 path: '/center',
                 component: _import('center/mine'),
                 meta: {
@@ -83,16 +72,6 @@ export const constantRouterMap = [
                 name: 'qbcode',
                 meta: {
                     title: 'qbcode',
-                    icon: '',
-                    cache: true,
-                }
-            },
-            {
-                path: '/center/userinfo',
-                component: _import('center/userInfo'),
-                name: 'userinfo',
-                meta: {
-                    title: 'userinfo',
                     icon: '',
                     cache: true,
                 }
@@ -157,16 +136,6 @@ export const constantRouterMap = [
                 name: 'search',
                 meta: {
                     title: 'search',
-                    icon: '',
-                    cache: true,
-                }
-            },
-            {
-                path: '/coupon',
-                component: _import('coupon/index'),
-                name: 'coupon',
-                meta: {
-                    title: 'coupon',
                     icon: '',
                     cache: true,
                 }
