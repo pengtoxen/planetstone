@@ -23,7 +23,7 @@
         <div class="goods-spec">
           <div class="goods-spec-name">
             <span class="spec">规格</span>
-            <span class="spec-desc">餐边柜[蓝色+可储物]</span>
+            <span class="spec-desc">餐边柜 [蓝色+可储物] </span>
           </div>
           <div class="goods-spec-arrow" @click="pickAttr()">
             <svg-icon icon-class="right"/>
